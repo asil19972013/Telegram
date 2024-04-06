@@ -1,4 +1,4 @@
-package uz.pdp.telegram.backend.model;
+package uz.pdp.telegram.backend;
 
 import java.sql.DataTruncation;
 import java.util.UUID;

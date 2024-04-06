@@ -1,6 +1,8 @@
 package uz.pdp.telegram.backend.model;
 
-public class User extends BaceModel{
+import uz.pdp.telegram.backend.BaceModel;
+
+public class User extends BaceModel {
     private String name;
     private String phone;
     private String password;
