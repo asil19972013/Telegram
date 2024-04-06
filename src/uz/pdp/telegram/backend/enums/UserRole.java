@@ -1,4 +1,4 @@
-package uz.pdp.telegram.enums;
+package uz.pdp.telegram.backend.enums;
 
 public enum UserRole {
     ADMIN,
