@@ -36,4 +36,13 @@ public class User extends BaceModel {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
