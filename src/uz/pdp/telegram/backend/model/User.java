@@ -43,4 +43,5 @@ public class User extends BaceModel {
                 ", password='" + password + '\'' +
                 '}';
     }
+    
 }
