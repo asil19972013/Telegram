@@ -1,6 +1,8 @@
 package uz.pdp.telegram.backend.service.massageService;
 
 import uz.pdp.telegram.backend.model.Massage;
+import uz.pdp.telegram.backend.service.groupService.GroupService;
+import uz.pdp.telegram.backend.service.groupService.GroupServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,5 +38,15 @@ public class MassageServiceImpl implements MassageService{
     @Override
     public List<Massage> getAll() {
         return List.of();
+    }
+
+    static MassageService massageService;
+
+
+    public static MassageService getInstance(){
+        if(massageService==null){
+            massageService=new MassageServiceImpl();
+        }
+        return  massageService;
     }
 }

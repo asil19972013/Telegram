@@ -36,4 +36,14 @@ public class ChatServiceImpl implements ChatService {
     public List<Chat> getAll() {
         return List.of();
     }
+
+    static ChatService chatService;
+
+
+    public static ChatService getInstance(){
+        if(chatService==null){
+            chatService=new ChatServiceImpl();
+        }
+        return  chatService;
+    }
 }

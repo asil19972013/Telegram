@@ -37,4 +37,15 @@ public class UserServiceImpl implements UserService{
     public List<User> getAll() {
         return List.of();
     }
+
+
+    static UserService userService;
+
+
+    public static UserService getInstance(){
+        if(userService==null){
+            userService=new UserServiceImpl();
+        }
+        return  userService;
+    }
 }
