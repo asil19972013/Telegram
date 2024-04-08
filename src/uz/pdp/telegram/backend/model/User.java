@@ -1,7 +1,5 @@
 package uz.pdp.telegram.backend.model;
 
-import uz.pdp.telegram.backend.BaceModel;
-
 public class User extends BaceModel {
     private String name;
     private String phone;
@@ -45,4 +43,5 @@ public class User extends BaceModel {
                 ", password='" + password + '\'' +
                 '}';
     }
+    
 }
