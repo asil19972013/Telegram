@@ -1,6 +1,5 @@
-package uz.pdp.telegram.backend;
+package uz.pdp.telegram.backend.model;
 
-import java.sql.DataTruncation;
 import java.util.UUID;
 
 public abstract class BaceModel {
