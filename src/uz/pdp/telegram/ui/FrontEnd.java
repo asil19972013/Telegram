@@ -11,9 +11,7 @@ public class FrontEnd {
             Integer menu = LoginViews.menu();
             switch (menu){
                 case 1->{
-                    if( curUser!= null){
 
-                    }
 
                 }
 
