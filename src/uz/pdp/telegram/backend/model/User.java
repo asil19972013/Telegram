@@ -1,22 +1,22 @@
 package uz.pdp.telegram.backend.model;
 
 public class User extends BaceModel {
-    private String name;
+    private String username;
     private String phone;
     private String password;
 
     public User(String name, String phone, String password) {
-        this.name = name;
+        this.username = name;
         this.phone = phone;
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String name) {
+        this.username = name;
     }
 
     public String getPassword() {
@@ -38,7 +38,7 @@ public class User extends BaceModel {
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
+                "name='" + username + '\'' +
                 ", phone='" + phone + '\'' +
                 ", password='" + password + '\'' +
                 '}';

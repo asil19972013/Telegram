@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService{
     public User login(LoginDto login) {
 
         for (User user : userList) {
-            if(Objects.equals(user.getName(),login.name())&&
+            if(Objects.equals(user.getUsername(),login.username())&&
                     Objects.equals(user.getPassword(),login.password())){
                 return user;
             }
