@@ -32,23 +32,25 @@ public class ChatView {
 
     public static void createChat() {
         List<User> users = userService.getAll();
-        int i=1;
+        int i = 1;
         for (User user : users) {
-                System.out.println(i+ "-" + user.getUsername());
-                ++i;
+            System.out.println(i + "-" + user.getUsername());
+            ++i;
         }
-        User myUser = users.get(ScanUtil.intScan("Choose: ")-1);
+        User myUser = users.get(ScanUtil.intScan("Choose: ") - 1);
         Chat chat = new Chat(FrontEnd.curUser.getId(), myUser.getId());
         chatService.create(chat);
-    }
+
+        }
 
 
-    private static void allChats() {
-        List<Chat> allChats = chatService.getAll();
-        int i=1;
-        for (Chat chat : allChats) {
-            User user = userService.get(chat.getUser2Id());
-            System.out.println(i+"-"+user.getUsername());
+
+    public static void allChats() {
+        List<Chat> chats = chatService.seeAllMyChats(FrontEnd.curUser.getId());
+        int i=0;
+        for (Chat chat : chats) {
+            User user=userService.get(chat.getUser2Id());
+            System.out.println(i+1+"-"+user.getUsername());
             i++;
         }
     }
@@ -59,9 +61,6 @@ public static void delete(){
     Chat chat = all.get(ScanUtil.intScan("Choose: ") - 1);
     chatService.delete(chat.getId());
 
-   /* List<User> all = userService.getAll();
-    User user = all.get(ScanUtil.intScan("Choose: ") - 1);
-    return chatService.delete(ScanUtil.intScan("Choose: ") - 1)*/
 }
 
     public static void chatPart() {

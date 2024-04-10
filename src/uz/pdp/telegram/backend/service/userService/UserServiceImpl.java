@@ -21,7 +21,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User login(LoginDto login) {
-
         for (User user : userList) {
             if(Objects.equals(user.getUsername(),login.username())&&
                     Objects.equals(user.getPassword(),login.password())){

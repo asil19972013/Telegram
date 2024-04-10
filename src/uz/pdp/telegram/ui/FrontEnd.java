@@ -13,7 +13,8 @@ public class FrontEnd {
             Integer menu = LoginViews.menu();
             switch (menu) {
                 case 1 -> {
-                    curUser = LoginViews.logIn();
+                    User user = LoginViews.logIn();
+                    curUser=user;
                     if (curUser != null) {
                         UserView.userProfile();
                     }

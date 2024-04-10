@@ -5,8 +5,8 @@ public class User extends BaceModel {
     private String phone;
     private String password;
 
-    public User(String name, String phone, String password) {
-        this.username = name;
+    public User(String username, String phone, String password) {
+        this.username = username;
         this.phone = phone;
         this.password = password;
     }

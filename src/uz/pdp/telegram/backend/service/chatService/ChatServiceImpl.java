@@ -13,18 +13,32 @@ public class ChatServiceImpl implements ChatService {
         this.chatList = new ArrayList<>();
     }
 
+
     @Override
-    public boolean create(Chat chat) {
-        this.chatList.add(chat);
-        return true;
+    public List<Chat> seeAllMyChats(String userId) {
+        List<Chat>chatList1=new ArrayList<>();
+        for (Chat chat : chatList) {
+            if(Objects.equals(chat.getUser1Id(),userId)){
+                chatList1.add(chat);
+            }
+        }
+        return  chatList1;
     }
 
     @Override
+    public boolean create(Chat chat) {
+                this.chatList.add(chat);
+ return true;
+    }
+
+
+    @Override
     public void delete(String id) {
-        for (Chat chat : chatList) {
-            if(Objects.equals(chat.getId(),id)){
-                chatList.remove(chat);
-            }
+        for (int i = 0; i < chatList.size(); i++) {
+         Chat chat=chatList.get(i);
+         if(Objects.equals(chat.getId(),id)){
+            chatList.remove(i);
+         }
         }
     }
 
@@ -37,6 +51,12 @@ public class ChatServiceImpl implements ChatService {
 
     @Override
     public Chat get(String id) {
+        for (int i = 0; i < chatList.size(); i++) {
+            Chat chat = chatList.get(i);
+            if(Objects.equals(chat.getId(),id)){
+                return chat;
+            }
+        }
         return null;
     }
 

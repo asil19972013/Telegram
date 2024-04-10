@@ -20,7 +20,7 @@ public class UserView {
             switch (options) {
                 case 1 -> ChatView.chatPart();
                 case 2 -> GroupView.groupPart();
-                case 3 -> MassageView.massagePat();
+                case 3 -> MassageView.massagePart();
                 case 0 -> {
                     return;
                 }
