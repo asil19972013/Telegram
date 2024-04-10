@@ -31,7 +31,8 @@ public class UserServiceImpl implements UserService{
     }
     @Override
     public boolean create(User user) {
-        return false;
+        userList.add(user);
+        return true;
     }
 
     @Override
