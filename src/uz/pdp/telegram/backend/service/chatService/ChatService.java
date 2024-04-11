@@ -6,5 +6,5 @@ import uz.pdp.telegram.backend.service.BaceService;
 import java.util.List;
 
 public interface ChatService extends BaceService<Chat> {
-List<Chat> seeAllMyChats(String userId);
+    List<Chat> seeAllMyChats(String userId);
 }
