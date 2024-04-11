@@ -1,6 +1,9 @@
 package uz.pdp.telegram.backend.service.massageService;
 
+import uz.pdp.telegram.backend.enums.MassageStatus;
+import uz.pdp.telegram.backend.model.Chat;
 import uz.pdp.telegram.backend.model.Massage;
+import uz.pdp.telegram.backend.model.User;
 import uz.pdp.telegram.backend.service.groupService.GroupService;
 import uz.pdp.telegram.backend.service.groupService.GroupServiceImpl;
 
@@ -17,8 +20,43 @@ public class MassageServiceImpl implements MassageService{
 
     @Override
     public boolean create(Massage massage) {
-        return false;
+        massageList.add(massage);
+        return true;
     }
+
+    @Override
+    public List<Massage> seeReadedMassags(String myId) {
+        List<Massage>readedMas=new ArrayList<>();
+        for (Massage massage : massageList) {
+            if(massage.getMassageStatus().equals(MassageStatus.READED)&&massage.getTo().equals(myId)){
+                readedMas.add(massage);
+            }
+        }
+        return readedMas;
+    }
+
+    @Override
+    public List<Massage> seeUnreadedMassags(String myId) {
+        List<Massage>unreadedMas=new ArrayList<>();
+        for (Massage massage : massageList) {
+            if(massage.getMassageStatus().equals(MassageStatus.UNREADED)&&massage.getTo().equals(myId)){
+                unreadedMas.add(massage);
+            }
+        }
+        return unreadedMas;
+    }
+
+    @Override
+    public List<Massage> throughUserSeeAllMassages(String myId,String userId) {
+        List<Massage>massageList1=new ArrayList<>();
+        for (Massage massage : massageList) {
+            if(massage.getTo().equals(myId)&&massage.getFrom().equals(userId)){
+                massageList1.add(massage);
+            }
+        }
+        return massageList1;
+    }
+
 
     @Override
     public void delete(String id) {

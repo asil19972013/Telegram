@@ -2,23 +2,22 @@ package uz.pdp.telegram.backend.enums;
 
 import java.util.StringJoiner;
 
-public enum  MassageType {
-    GROUP,
-    CHAT;
-
+public enum MassageStatus {
+    READED,
+    UNREADED;
 
     public static String show(){
-        MassageType[] values = MassageType.values();
+        MassageStatus[] values = MassageStatus.values();
         StringJoiner stringJoiner=new StringJoiner(",","[","]");
-        for (MassageType value : values) {
+        for (MassageStatus value : values) {
             stringJoiner.add(value.ordinal()+1+"-"+value.name());
         }
         return stringJoiner.toString();
     }
 
-    public static MassageType getType(Integer ordinal){
-        MassageType[] values = MassageType.values();
-        for (MassageType value : values) {
+    public static MassageStatus getStatus(Integer ordinal){
+        MassageStatus[] values = MassageStatus.values();
+        for (MassageStatus value : values) {
             if(value.ordinal()==ordinal-1){
                 return value;
             }

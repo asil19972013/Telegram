@@ -2,6 +2,7 @@ package uz.pdp.telegram.backend.service.userService;
 
 import uz.pdp.telegram.backend.dto.LoginDto;
 import uz.pdp.telegram.backend.model.User;
+import uz.pdp.telegram.ui.FrontEnd;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +16,11 @@ public class UserServiceImpl implements UserService{
 
     public UserServiceImpl() {
         this.userList = new ArrayList<>();
+        userList.add(new User("user","555","userboy"));
     }
 
     @Override
     public User login(LoginDto login) {
-
         for (User user : userList) {
             if(Objects.equals(user.getUsername(),login.username())&&
                     Objects.equals(user.getPassword(),login.password())){
@@ -31,7 +32,8 @@ public class UserServiceImpl implements UserService{
     }
     @Override
     public boolean create(User user) {
-        return false;
+        userList.add(user);
+        return true;
     }
 
     @Override
@@ -46,12 +48,23 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User get(String id) {
+        for (User user : userList) {
+            if(Objects.equals(user.getId(),id)){
+                return user;
+            }
+        }
         return null;
     }
 
     @Override
     public List<User> getAll() {
-        return List.of();
+        List<User>getList=new ArrayList<>();
+        for (User user : userList) {
+            if (!(Objects.equals(FrontEnd.curUser.getId(),user.getId()))){
+                getList.add(user);
+            }
+        }
+      return getList;
     }
 
 
