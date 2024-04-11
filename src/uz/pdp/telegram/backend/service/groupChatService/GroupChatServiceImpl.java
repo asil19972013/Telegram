@@ -17,6 +17,7 @@ public class GroupChatServiceImpl implements GroupChatService{
 
     @Override
     public boolean create(GroupChat groupChat) {
+        this.groupChatList.add(groupChat);
         return false;
     }
 

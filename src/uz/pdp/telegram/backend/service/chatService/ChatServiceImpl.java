@@ -28,7 +28,7 @@ public class ChatServiceImpl implements ChatService {
     @Override
     public boolean create(Chat chat) {
                 this.chatList.add(chat);
- return true;
+                return true;
     }
 
 

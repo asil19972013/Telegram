@@ -9,10 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class UserServiceImpl implements UserService{
-
-
     List<User>userList;
-
 
     public UserServiceImpl() {
         this.userList = new ArrayList<>();
