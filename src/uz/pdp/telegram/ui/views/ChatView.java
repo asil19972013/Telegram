@@ -40,16 +40,21 @@ public class ChatView {
 
     public static void createChat() {
         List<User> users = userService.getAll();
-        String id = "";
-        String choose=ScanUtil.strScan("Enter phone number");
+        boolean equals=false;
+        User user2 = null;
+        String choose=ScanUtil.strScan("Enter phone number: ");
         for (User user : users) {
-            boolean equals = user.getPhone().equals(choose);
+            equals = user.getPhone().equals(choose);
             if (equals){
-                 id = user.getId();
-            }
+            user2=user;}
         }
-        Chat chat = new Chat(FrontEnd.curUser.getId(), id);
-        chatService.create(chat);
+        if(equals){
+            Chat chat = new Chat(FrontEnd.curUser.getId(), user2.getId());
+            chatService.create(chat);
+            System.out.println("Successfully added!!!");
+        } else {
+            System.out.print("Do not have this account in telegram");
+        }
         }
 
 

@@ -77,6 +77,11 @@ public class MassageServiceImpl implements MassageService{
     }
 
     @Override
+    public List<Massage> seeAllMassagesByUser(String userId, String chatId) {
+        return List.of();
+    }
+
+    @Override
     public void updete(Massage massage) {
 
     }
