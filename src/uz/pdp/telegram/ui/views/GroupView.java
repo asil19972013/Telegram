@@ -37,11 +37,8 @@ public class GroupView {
 
     }
     public static void createGroup(){
-        String show = GroupType.show();
-        System.out.println(show);
-        GroupType type = GroupType.getType(ScanUtil.intScan("Choose: "));
         String groupName=ScanUtil.strScan("Enter group name");
-        Group group=new Group(type,groupName,FrontEnd.curUser.getId());
+        Group group=new Group(groupName,FrontEnd.curUser.getId());
         groupService.create(group);
         System.out.println("Sucseesfully added✅✅✅");
 
@@ -63,7 +60,6 @@ public class GroupView {
               }
 
           }
-
 
     }
 
@@ -105,17 +101,6 @@ public class GroupView {
         groupService.delete(group.getId());
         System.out.println("Sucsessfully deleted✅✅✅");
     }
-
-
-    public static void sendMassageToTheGroup() {
-        List<Group> groups = seeAllMyGroups();
-        Group group = groups.get(ScanUtil.intScan("Choose: ") - 1);
-        String word = ScanUtil.strScan("Enter massage-->");
-        LocalDateTime localDateTime = LocalDateTime.now();
-        Massage massage = new Massage(FrontEnd.curUser.getId(), group.getId(), word, localDateTime);
-        massageService.create(massage);
-    }
-
 
 
     public static List<User>  allUsers(){

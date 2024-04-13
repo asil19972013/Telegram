@@ -6,11 +6,9 @@ import java.util.List;
 
 public class Group extends BaceModel {
     private String groupName;
-    private GroupType type;
     private String owner;
 
-    public Group( GroupType type,String groupName,String owner) {
-        this.type = type;
+    public Group(String groupName,String owner) {
         this.groupName=groupName;
         this.owner=owner;
     }
@@ -31,11 +29,5 @@ public class Group extends BaceModel {
         this.owner = owner;
     }
 
-    public GroupType getType() {
-        return type;
-    }
 
-    public void setType(GroupType type) {
-        this.type = type;
-    }
 }

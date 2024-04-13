@@ -1,5 +1,6 @@
 package uz.pdp.telegram.ui.views;
 
+import com.sun.source.doctree.BlockTagTree;
 import uz.pdp.telegram.backend.enums.MassageStatus;
 import uz.pdp.telegram.backend.enums.MassageType;
 import uz.pdp.telegram.backend.model.Chat;
@@ -39,15 +40,16 @@ public class ChatView {
 
     public static void createChat() {
         List<User> users = userService.getAll();
-        int i = 1;
+        String id = "";
+        String choose=ScanUtil.strScan("Enter phone number");
         for (User user : users) {
-            System.out.println(i + "-" + user.getUsername());
-            ++i;
+            boolean equals = user.getPhone().equals(choose);
+            if (equals){
+                 id = user.getId();
+            }
         }
-        User myUser = users.get(ScanUtil.intScan("Choose: ") - 1);
-        Chat chat = new Chat(FrontEnd.curUser.getId(), myUser.getId());
+        Chat chat = new Chat(FrontEnd.curUser.getId(), id);
         chatService.create(chat);
-
         }
 
 
