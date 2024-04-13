@@ -90,9 +90,7 @@ public class MassageView {
 
     public static int menu(){
         System.out.println("""
-                1.See unreaded massages
-                2.See readed massages
-                3.User's massages
+                1.User's massages
                 0.Exit
                 """);
         return ScanUtil.intScan("Choose: ");

@@ -30,10 +30,8 @@ public class ChatView {
 
     public static int menu(){
         System.out.println("""
-                1.Create chat         
-                2.See my all created chats
-                3.Chating with user
-                4.Delete
+                1.Create chat
+                2.Delete
                 0.Exit
                 """);
         return ScanUtil.intScan("Choose: ");
