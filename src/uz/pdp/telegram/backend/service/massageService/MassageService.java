@@ -9,5 +9,5 @@ public interface MassageService extends BaceService<Massage> {
     List<Massage> seeUnreadedMassags(String myId);
     List<Massage>seeReadedMassags(String myId);
     List<Massage> throughUserSeeAllMassages(String myId, String userId);
-    List<Massage>seeAllMassagesByAdminId(String adminId);
+    List<Massage>seeAllMassagesByGroup(String adminId,String groupId);
 }

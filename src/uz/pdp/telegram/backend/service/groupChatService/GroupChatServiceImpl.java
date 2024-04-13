@@ -24,7 +24,10 @@ public class GroupChatServiceImpl implements GroupChatService{
 
     @Override
     public void delete(String id) {
+        for (int i = 0; i < groupChatList.size(); i++) {
+            GroupChat groupChat = groupChatList.get(i);
 
+        }
     }
 
     @Override

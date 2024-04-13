@@ -5,14 +5,14 @@ import uz.pdp.telegram.backend.enums.GroupType;
 import java.util.List;
 
 public class Group extends BaceModel {
-    public String groupName;
-    public String groupChatId;
-    public GroupType type;
+    private String groupName;
+    private GroupType type;
+    private String owner;
 
-    public Group(String groupChatId, GroupType type,String groupName) {
-        this.groupChatId = groupChatId;
+    public Group( GroupType type,String groupName,String owner) {
         this.type = type;
         this.groupName=groupName;
+        this.owner=owner;
     }
 
     public String getGroupName() {
@@ -23,12 +23,12 @@ public class Group extends BaceModel {
         this.groupName = groupName;
     }
 
-    public String getGroupChatId() {
-        return groupChatId;
+    public String getOwner() {
+        return owner;
     }
 
-    public void setGroupChatId(String groupChatId) {
-        this.groupChatId = groupChatId;
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     public GroupType getType() {

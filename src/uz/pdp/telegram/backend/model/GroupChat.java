@@ -2,7 +2,6 @@ package uz.pdp.telegram.backend.model;
 
 public class GroupChat extends BaceModel {
     private String groupId;
-
     private String userId;
 
 

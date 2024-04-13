@@ -32,10 +32,9 @@ public class Massage extends BaceModel {
         this.date=localDate;
     }
 
-    public Massage(String from, String to, MassageType type,String word,LocalDateTime localDate) {
+    public Massage(String from, String to,String word,LocalDateTime localDate) {
         this.from = from;
         this.to = to;
-        this.type = type;
         this.word=word;
         this.date=localDate;
     }

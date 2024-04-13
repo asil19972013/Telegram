@@ -30,44 +30,23 @@ public class GroupView {
     public static int menu(){
         System.out.println("""
                 1.Create group
-                2.Send message to group
-                3.See my own groups 
-                4.See my group massage
-                5.Delete group
+                2.Add users to group
+                3.Send message to group
+                4.See my own groups 
+                5.See my group massage
+                6.Delete group
                 0.Exit    """);
         return ScanUtil.intScan("Choose ");
 
     }
     public static void createGroup(){
-        while (true) {
-            System.out.println("1.I want to add users to group \n2.I want to create group \n3.Back");
-            int option = ScanUtil.intScan("Choose: ");
-            switch (option) {
-                case 1 -> {
-                    User user = allUsers().get(ScanUtil.intScan("Choose: ") - 1);
-                    GroupChat groupChat = new GroupChat(FrontEnd.curUser.getId(), user.getId());
-                    groupChatService.create(groupChat);
-                }
-                case 2 -> {
-                    if (groupChatService != null) {
-                        List<GroupChat> all = groupChatService.getAll();
-                        String groupName = ScanUtil.strScan("Give a name for your group");
-                        for (GroupChat groupChat : all) {
-                            Group group=new Group(groupChat.getId(),GroupType.PUBLIC,groupName);
-                            groupService.create(group);
-                        }
-                        System.out.println("Created sucsessfuly✅✅✅");
-                    } else {
-                        System.out.println("You do not have users❌❌❌");
-                    }
-                }
-                case 3 -> {
-                    return;
-                }
-                default -> System.out.println("Wrong option.Try again🔍🔍🔍");
-
-            }
-        }
+        String show = GroupType.show();
+        System.out.println(show);
+        GroupType type = GroupType.getType(ScanUtil.intScan("Choose: "));
+        String groupName=ScanUtil.strScan("Enter group name");
+        Group group=new Group(type,groupName,FrontEnd.curUser.getId());
+        groupService.create(group);
+        System.out.println("Sucseesfully added✅✅✅");
 
     }
 
@@ -77,10 +56,11 @@ public class GroupView {
               int option =menu();
               switch (option){
                   case 1->createGroup();
-                  case 2->sendMassageToTheGroup();
-                  case 3->seeAllMyGroups();
-                  case 4->seeMyGroupMassage();
-                  case 5->deleteGroup();
+                  case 2->addUsersToGroup();
+                  case 3->sendMassageToTheGroup();
+                  case 4->seeAllMyGroups();
+                  case 5->seeMyGroupMassage();
+                  case 6->deleteGroup();
                   case 0-> {
                       return;
                   }
@@ -93,54 +73,69 @@ public class GroupView {
 
     }
 
-
-
-    public static void seeMyGroupMassage () {
-        List<Massage> massages = massageService.seeAllMassagesByAdminId(FrontEnd.curUser.getId());
-        Set<String>massages1=new HashSet<>();
-        for (Massage massage : massages) {
-            massages1.add(massage.getWord());
+    private static void addUsersToGroup() {
+        List<Group> groups = seeAllMyGroups();
+        Group group = groups.get(ScanUtil.intScan("Choose: ") - 1);
+        List<User> all = userService.getAll();
+        int i=0;
+        for (User user : all) {
+            System.out.println(user.getUsername());
+            i++;
         }
-        for (String s : massages1) {
-            System.out.println(s);
-        }
+        User user = all.get(ScanUtil.intScan("Choose: ") - 1);
+        GroupChat groupChat=new GroupChat(group.getId(),user.getId());
+        groupChatService.create(groupChat);
+        System.out.println("Added sucsessfully✅✅✅");
+
     }
 
 
-
-
-    public static Set<String> seeAllMyGroups() {
-        Set<String>groups=new HashSet<>();
-        int i=0;
-        for (Group group : groupService.getAll()) {
-          groups.add(group.getGroupName());
+    public static void seeMyGroupMassage () {
+        List<Group> groups = seeAllMyGroups();
+            Group group = groups.get(ScanUtil.intScan("Choose: ") - 1);
+            List<Massage> massages = massageService.seeAllMassagesByGroup(FrontEnd.curUser.getId(), group.getId());
+            for (Massage massage : massages) {
+                System.out.println(massage.getWord());
+            }
         }
-        for (String group : groups) {
-            System.out.println(i+1+"-"+group);
-            i++;
+
+
+
+
+
+    public static List<Group> seeAllMyGroups() {
+        List<Group> groups = groupService.allMyGroups(FrontEnd.curUser.getId());
+        int i=0;
+        if(groups.isEmpty()){
+            System.out.println("You do not have group❌❌❌");
+        }
+        else {
+            for (Group group : groups) {
+                System.out.println(i+1+"-"+group.getGroupName());
+                i++;
+            }
         }
         return groups;
     }
 
     public static void deleteGroup() {
-
+        List<Group> groups = seeAllMyGroups();
+        Group group = groups.get(ScanUtil.intScan("Choose: ") - 1);
+        groupService.delete(group.getId());
+        System.out.println("Sucsessfully deleted✅✅✅");
     }
 
 
     public static void sendMassageToTheGroup() {
-        Set<String> strings = seeAllMyGroups();
-        ArrayList<String> arrayList = new ArrayList<>(strings);
-        String option = arrayList.get(ScanUtil.intScan("Choose: ") - 1);
-        String word=ScanUtil.strScan("Send a massage: ");
-        LocalDateTime localDateTime=LocalDateTime.now();
-        for (Group group : groupService.getAll()) {
-            if(group.getGroupName().equals(option)){
-                GroupChat groupChat = groupChatService.get(group.groupChatId);
-                Massage massage=new Massage(FrontEnd.curUser.getId(),groupChat.getUserId(), MassageType.GROUP,word,localDateTime);
-                massageService.create(massage);
-            }
-        }
+        List<Group> groups = seeAllMyGroups();
+        Group group = groups.get(ScanUtil.intScan("Choose: ") - 1);
+        String word = ScanUtil.strScan("Enter massage-->");
+        LocalDateTime localDateTime = LocalDateTime.now();
+        Massage massage = new Massage(FrontEnd.curUser.getId(), group.getId(), word, localDateTime);
+        massageService.create(massage);
     }
+
+
 
     public static List<User>  allUsers(){
         List<User> users= userService.getAll();

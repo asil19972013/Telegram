@@ -24,7 +24,12 @@ public class GroupServiceImpl implements GroupService{
 
     @Override
     public void delete(String id) {
-
+        for (int i = 0; i < groupList.size(); i++) {
+            Group group = groupList.get(i);
+            if(Objects.equals(group.getId(),id)){
+                groupList.remove(i);
+            }
+        }
     }
 
     @Override
@@ -53,4 +58,14 @@ public class GroupServiceImpl implements GroupService{
         return  groupService;
     }
 
+    @Override
+    public List<Group> allMyGroups(String ownerId) {
+        List<Group>list=new ArrayList<>();
+        for (Group group : groupList) {
+            if(Objects.equals(group.getOwner(),ownerId)){
+                list.add(group);
+            }
+        }
+        return list;
+    }
 }
