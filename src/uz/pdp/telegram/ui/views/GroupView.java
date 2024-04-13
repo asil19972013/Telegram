@@ -31,11 +31,8 @@ public class GroupView {
         System.out.println("""
                 1.Create group
                 2.Add users to group
-                3.Send message to group
-                4.See my own groups 
-                5.See my group massage
-                6.Delete group
-                0.Exit    """);
+                3.Delete group
+                0.Exit""");
         return ScanUtil.intScan("Choose ");
 
     }
@@ -57,10 +54,7 @@ public class GroupView {
               switch (option){
                   case 1->createGroup();
                   case 2->addUsersToGroup();
-                  case 3->sendMassageToTheGroup();
-                  case 4->seeAllMyGroups();
-                  case 5->seeMyGroupMassage();
-                  case 6->deleteGroup();
+                  case 3->deleteGroup();
                   case 0-> {
                       return;
                   }
@@ -88,19 +82,6 @@ public class GroupView {
         System.out.println("Added sucsessfully✅✅✅");
 
     }
-
-
-    public static void seeMyGroupMassage () {
-        List<Group> groups = seeAllMyGroups();
-            Group group = groups.get(ScanUtil.intScan("Choose: ") - 1);
-            List<Massage> massages = massageService.seeAllMassagesByGroup(FrontEnd.curUser.getId(), group.getId());
-            for (Massage massage : massages) {
-                System.out.println(massage.getWord());
-            }
-        }
-
-
-
 
 
     public static List<Group> seeAllMyGroups() {
