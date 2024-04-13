@@ -33,10 +33,9 @@ public class MassageView {
         while (true){
             int options = menu();
             switch (options){
-                case 1->chatWhithUser();
-                case 2->unreadedMassages();
-                case 3->readedMassages();
-                case 4->seeChatsWithUser();
+                case 1->unreadedMassages();
+                case 2->readedMassages();
+                case 3->seeChatsWithUser();
                 case 0-> {
                     return;
                 }
@@ -54,7 +53,6 @@ public class MassageView {
         }
         if(!(all.isEmpty())) {
             User user = all.get(ScanUtil.intScan("Choose: ") - 1);
-
             List<Massage> massages = massageService.throughUserSeeAllMassages(FrontEnd.curUser.getId(), user.getId());
             List<Massage> massages1 = massageService.throughUserSeeAllMassages(user.getId(), FrontEnd.curUser.getId());
                 for (Massage massage : massages1) {
@@ -76,11 +74,12 @@ public class MassageView {
         for (Massage massage : massages) {
             User user=userService.get(massage.getFrom());
             System.out.println(user.getUsername()+"-"+massage.getWord());
+            massage.setMassageStatus(MassageStatus.READED);
         }
     }
 
     public static void readedMassages() {
-        List<Massage> massages = massageService.seeUnreadedMassags(FrontEnd.curUser.getId());
+        List<Massage> massages = massageService.seeReadedMassags(FrontEnd.curUser.getId());
         for (Massage massage : massages) {
             User user=userService.get(massage.getFrom());
             System.out.println(user.getUsername()+"-"+massage.getWord());
@@ -89,37 +88,11 @@ public class MassageView {
 
 
 
-    public static void chatWhithUser() {
-        List<Chat> chats = chatService.seeAllMyChats(FrontEnd.curUser.getId());
-        int i=0;
-            for (Chat chat : chats) {
-                User user=userService.get(chat.getUser2Id());
-                System.out.println(i+1+"-"+user.getUsername());
-                i++;
-            }
-            if(!(chats.isEmpty())) {
-                Chat chat = chats.get(ScanUtil.intScan("Choose: ") - 1);
-                String word = ScanUtil.strScan("============");
-                String showType = MassageType.show();
-                System.out.println(showType);
-                MassageType type = MassageType.getType(ScanUtil.intScan("Choose"));
-                String showStatus = MassageStatus.show();
-                System.out.println(showStatus);
-                MassageStatus status = MassageStatus.getStatus(ScanUtil.intScan("Choose: "));
-                LocalDateTime localDateTime=LocalDateTime.now();
-                Massage massage = new Massage(FrontEnd.curUser.getId(), chat.getUser2Id(),type, word, status,localDateTime);
-                massageService.create(massage);
-            }
-            else System.out.println("You have not existed chats❌❌❌");
-    }
-
-
     public static int menu(){
         System.out.println("""
-                1.Chatting with person
-                2.See unreaded massages
-                3.See readed massages
-                4.User's massages
+                1.See unreaded massages
+                2.See readed massages
+                3.User's massages
                 0.Exit
                 """);
         return ScanUtil.intScan("Choose: ");

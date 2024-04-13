@@ -20,14 +20,23 @@ public class Massage extends BaceModel {
 
     private LocalDateTime date;
 
+    private MassageType massageType;
 
 
-    public Massage(String from, String to, MassageType type,String word,MassageStatus massageStatus,LocalDateTime localDate) {
+
+    public Massage(String from, String to,String word,MassageStatus massageStatus,LocalDateTime localDate) {
+        this.from = from;
+        this.to = to;
+        this.word=word;
+        this.massageStatus=massageStatus;
+        this.date=localDate;
+    }
+
+    public Massage(String from, String to, MassageType type,String word,LocalDateTime localDate) {
         this.from = from;
         this.to = to;
         this.type = type;
         this.word=word;
-        this.massageStatus=massageStatus;
         this.date=localDate;
     }
 
@@ -77,5 +86,13 @@ public class Massage extends BaceModel {
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public MassageType getMassageType() {
+        return massageType;
+    }
+
+    public void setMassageType(MassageType massageType) {
+        this.massageType = massageType;
     }
 }

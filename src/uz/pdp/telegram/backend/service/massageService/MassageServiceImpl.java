@@ -9,6 +9,7 @@ import uz.pdp.telegram.backend.service.groupService.GroupServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MassageServiceImpl implements MassageService{
 
@@ -61,6 +62,18 @@ public class MassageServiceImpl implements MassageService{
     @Override
     public void delete(String id) {
 
+    }
+
+
+    @Override
+    public List<Massage> seeAllMassagesByAdminId(String adminId) {
+        List<Massage>adminMassage=new ArrayList<>();
+        for (Massage massage : massageList) {
+            if(Objects.equals(massage.getFrom(),adminId)){
+                adminMassage.add(massage);
+            }
+        }
+        return adminMassage;
     }
 
     @Override

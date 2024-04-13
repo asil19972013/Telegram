@@ -2,21 +2,33 @@ package uz.pdp.telegram.backend.model;
 
 import uz.pdp.telegram.backend.enums.GroupType;
 
+import java.util.List;
+
 public class Group extends BaceModel {
-    private GroupChat chat;
+    public String groupName;
+    public String groupChatId;
     public GroupType type;
 
-    public Group(GroupChat chat, GroupType type) {
-        this.chat = chat;
+    public Group(String groupChatId, GroupType type,String groupName) {
+        this.groupChatId = groupChatId;
         this.type = type;
+        this.groupName=groupName;
     }
 
-    public GroupChat getChat() {
-        return chat;
+    public String getGroupName() {
+        return groupName;
     }
 
-    public void setChat(GroupChat chat) {
-        this.chat = chat;
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
+    public String getGroupChatId() {
+        return groupChatId;
+    }
+
+    public void setGroupChatId(String groupChatId) {
+        this.groupChatId = groupChatId;
     }
 
     public GroupType getType() {
@@ -25,10 +37,5 @@ public class Group extends BaceModel {
 
     public void setType(GroupType type) {
         this.type = type;
-    }
-
-    @Override
-    public String toString() {
-        return chat+ "" + type;
     }
 }

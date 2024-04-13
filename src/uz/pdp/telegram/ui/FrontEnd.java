@@ -18,6 +18,7 @@ public class FrontEnd {
                     if (curUser != null) {
                         UserView.userProfile();
                     }
+
                 }
                 case 2->LoginViews.signUp();
             }

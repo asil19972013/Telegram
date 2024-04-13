@@ -6,6 +6,7 @@ import uz.pdp.telegram.backend.service.groupChatService.GroupChatServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class GroupServiceImpl implements GroupService{
 
@@ -17,7 +18,8 @@ public class GroupServiceImpl implements GroupService{
 
     @Override
     public boolean create(Group group) {
-        return false;
+        groupList.add(group);
+        return true;
     }
 
     @Override
@@ -35,9 +37,10 @@ public class GroupServiceImpl implements GroupService{
         return null;
     }
 
+
     @Override
     public List<Group> getAll() {
-        return List.of();
+        return groupList;
     }
 
     static GroupService groupService;
