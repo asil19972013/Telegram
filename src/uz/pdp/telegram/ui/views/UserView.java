@@ -27,10 +27,13 @@ public class UserView {
     public static void userProfile() {
         while (true) {
             ChatView.allChats();
+            int choose= ScanUtil.intScan("Choose chat")-1;
+
             int option = menu();
             switch (option) {
                 case 1 -> ChatView.chatPart();
                 case 2 -> GroupView.groupPart();
+                case 3 -> ChatView.allChats();
                 case 0 -> {
                     return;
                 }

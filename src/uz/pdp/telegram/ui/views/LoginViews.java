@@ -16,6 +16,7 @@ public class LoginViews {
         String password = ScanUtil.strScan("Password: ");
         LoginDto login1 = new LoginDto(username, password);
         User login =userService.login(login1);
+
         return login;
     }
 
