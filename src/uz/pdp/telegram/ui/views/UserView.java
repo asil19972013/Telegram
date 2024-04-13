@@ -20,6 +20,7 @@ public class UserView {
             int options = menu();
             switch (options) {
                 case 1 -> ChatView.chatPart();
+                case 2 -> GroupView.createGroup();
                 case 0 -> {
                     return;
                 }

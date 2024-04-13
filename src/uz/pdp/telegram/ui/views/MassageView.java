@@ -33,9 +33,9 @@ public class MassageView {
         while (true){
             int options = menu();
             switch (options){
-                case 1->unreadedMassages();
-                case 2->readedMassages();
-                case 3->seeChatsWithUser();
+                case 1->creatMessage();
+                case 2->creatMessage();
+                case 3->creatMessage();
                 case 0-> {
                     return;
                 }
@@ -44,48 +44,9 @@ public class MassageView {
         }
     }
 
-    public static void seeChatsWithUser() {
-        List<User> all = userService.getAll();
-        int i=0;
-        for (User user : all) {
-            System.out.println(i+1+"-"+user.getUsername());
-            i++;
-        }
-        if(!(all.isEmpty())) {
-            User user = all.get(ScanUtil.intScan("Choose: ") - 1);
-            List<Massage> massages = massageService.throughUserSeeAllMassages(FrontEnd.curUser.getId(), user.getId());
-            List<Massage> massages1 = massageService.throughUserSeeAllMassages(user.getId(), FrontEnd.curUser.getId());
-                for (Massage massage : massages1) {
-                    System.out.println(massage.getWord()+"-"+massage.getDate());
-                }
-                for (Massage massage : massages) {
-                    System.out.println(massage.getWord()+"-"+massage.getDate());
-                }
+    public static void creatMessage(){
 
-        }
-        else{
-                System.out.println("You have not existed users❌❌❌");
-            }
-        }
-
-
-    public static void unreadedMassages() {
-        List<Massage> massages = massageService.seeUnreadedMassags(FrontEnd.curUser.getId());
-        for (Massage massage : massages) {
-            User user=userService.get(massage.getFrom());
-            System.out.println(user.getUsername()+"-"+massage.getWord());
-            massage.setMassageStatus(MassageStatus.READED);
-        }
     }
-
-    public static void readedMassages() {
-        List<Massage> massages = massageService.seeReadedMassags(FrontEnd.curUser.getId());
-        for (Massage massage : massages) {
-            User user=userService.get(massage.getFrom());
-            System.out.println(user.getUsername()+"-"+massage.getWord());
-        }
-    }
-
 
 
     public static int menu(){

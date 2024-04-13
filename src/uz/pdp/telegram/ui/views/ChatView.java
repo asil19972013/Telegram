@@ -103,8 +103,7 @@ public static void delete(){
             switch (options){
                 case 1->createChat();
                 case 2->allChats();
-                case 3->chatWhithUser();
-                case 4->delete();
+                case 3->delete();
                 case 0-> {
                     return;
                 }
