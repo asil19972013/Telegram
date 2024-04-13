@@ -27,9 +27,10 @@ public class UserView {
     public static void userProfile() {
         while (true) {
             ChatView.allChats();
+            List<Chat> chats = chatService.seeAllMyChats(FrontEnd.curUser.getId());
+            if (chats==null){
+            int choose= ScanUtil.intScan("Choose chat: ")-1;
 
-            if (chatService.seeAllMyChats(String.valueOf(FrontEnd.curUser))==null){
-            int choose= ScanUtil.intScan("Choose chat")-1;
             }
 
             int option = menu();
