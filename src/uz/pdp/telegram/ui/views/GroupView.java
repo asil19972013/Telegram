@@ -61,8 +61,8 @@ public class GroupView {
 
 
     private static void addUsersToGroup() {
+        if(seeAllMyGroups().isEmpty()) return;
         List<Group> groups = seeAllMyGroups();
-        if(groups.isEmpty()) return;
         Group group = groups.get(ScanUtil.intScan("Choose: ") - 1);
         List<User> all = userService.getAll();
         int i=0;
