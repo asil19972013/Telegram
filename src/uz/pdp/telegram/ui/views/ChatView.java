@@ -71,8 +71,13 @@ public static void chatPart() {
 
 
 public static void deleteChat(){
+        if (myChats().isEmpty()){
+            System.out.println("You do not have users👩‍💻👩‍💻👩‍💻");
+            return;
+        }
        myChats();
        int choose= ScanUtil.intScan("Enter deletiton person: ");
+
 
 
 

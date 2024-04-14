@@ -31,7 +31,7 @@ public class GroupView {
 
     public static void groupSetting(){
         while (true) {
-            int menu = ScanUtil.intScan("1.create group \n2.delet group \n3.add user to group \n0. exit \nchoose: ");
+            int menu = ScanUtil.intScan("1.create group \n2.delet group \n3.add user to group \n0.exit \nchoose: ");
             System.out.println();
             switch (menu){
                 case 1->createGroup();
@@ -62,6 +62,7 @@ public class GroupView {
 
     private static void addUsersToGroup() {
         List<Group> groups = seeAllMyGroups();
+        if(groups.isEmpty()) return;
         Group group = groups.get(ScanUtil.intScan("Choose: ") - 1);
         List<User> all = userService.getAll();
         int i=0;
