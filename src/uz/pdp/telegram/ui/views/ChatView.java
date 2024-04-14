@@ -61,9 +61,9 @@ public static void chatPart() {
                 for (Massage massage : massages) {
                     System.out.println(massage.getWord());
                 }
-                Integer i = ScanUtil.intScan("0.Back \n1.Massage \n");
+                Integer i = ScanUtil.intScan("0.Back 1.Massage \n choose: ");
                 if (i == 0) return;
-                String strMass = ScanUtil.strScan("");
+                String strMass = ScanUtil.strScan("write a message here: ");
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 Massage massage = new Massage(FrontEnd.curUser.getId(), user.getId(), strMass, MassageStatus.UNREADED, simpleDateFormat);
                 massageService.create(massage);
