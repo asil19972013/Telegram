@@ -30,18 +30,6 @@ public class ChatView {
     static MassageService massageService= MassageServiceImpl.getInstance();
 
 
-    public static void allChats() {
-        List<Chat> chats = chatService.seeAllMyChats(FrontEnd.curUser.getId());
-        if (chats.isEmpty()){
-            System.out.println("You do not have any chats!!! ");
-        }
-        int i=0;
-        for (Chat chat : chats) {
-            User user=userService.get(chat.getUser2Id());
-            System.out.println(i+1+" "+user.getUsername());
-            i++;
-        }
-    }
 
 public static void chatPart() {
     List<Chat> chats = myChats();
