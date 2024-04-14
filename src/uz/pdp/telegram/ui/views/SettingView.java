@@ -24,8 +24,6 @@ import java.util.List;
 public class SettingView {
     static ChatService chatService= ChatServiceImpl.getInstance();
     static GroupService groupService = GroupServiceImpl.getInstance();
-    static GroupChatService groupChatService = GroupChatServiceImpl.getInstance();
-    static MassageService massageService = MassageServiceImpl.getInstance();
     static UserService userService = UserServiceImpl.getInstance();
 
 

@@ -12,7 +12,6 @@ import uz.pdp.telegram.ui.utils.ScanUtil;
 import java.util.List;
 
 public class UserView {
-    static UserService userService=UserServiceImpl.getInstance();
     public static int menu(){
         System.out.println("""
                 1.Chat

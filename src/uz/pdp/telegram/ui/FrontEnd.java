@@ -1,7 +1,6 @@
 package uz.pdp.telegram.ui;
 
 import uz.pdp.telegram.backend.model.User;
-import uz.pdp.telegram.ui.views.ChatView;
 import uz.pdp.telegram.ui.views.LoginViews;
 import uz.pdp.telegram.ui.views.UserView;
 
