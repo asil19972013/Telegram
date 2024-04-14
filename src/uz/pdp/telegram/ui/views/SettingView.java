@@ -2,6 +2,7 @@ package uz.pdp.telegram.ui.views;
 
 import com.sun.tools.javac.Main;
 import uz.pdp.telegram.backend.model.Chat;
+import uz.pdp.telegram.backend.model.Group;
 import uz.pdp.telegram.backend.model.User;
 import uz.pdp.telegram.backend.service.chatService.ChatService;
 import uz.pdp.telegram.backend.service.chatService.ChatServiceImpl;
@@ -42,7 +43,11 @@ public class SettingView {
     }
 
 
-    private static void createGroup(){
+    public static void createGroup(){
+        String groupName=ScanUtil.strScan("Enter group name");
+        Group group=new Group(groupName,FrontEnd.curUser.getId());
+        groupService.create(group);
+        System.out.println("Sucseesfully added✅✅✅");
 
     }
 
@@ -57,14 +62,17 @@ public class SettingView {
 
     }
    public static void viewProfile(){
-
+       System.out.println("Your name: "+FrontEnd.curUser.getUsername());
+       System.out.println("Your phone number: "+FrontEnd.curUser.getPhone());
+       System.out.println("Your phone password: "+FrontEnd.curUser.getPassword());
   }
   public static void changeName(){
-
-
+      String name=ScanUtil.strScan("What is your new name: ");
+      FrontEnd.curUser.setUsername(name);
   }
   public static void changeNumber(){
-
+      String number=ScanUtil.strScan("What is your new number: ");
+      FrontEnd.curUser.setPhone(number);
   }
   public static void deleteAccount(){
   }

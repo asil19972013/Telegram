@@ -68,6 +68,9 @@ public class ChatView {
 
     public static void allChats() {
         List<Chat> chats = chatService.seeAllMyChats(FrontEnd.curUser.getId());
+        if (chats.isEmpty()){
+            System.out.println("You do not have any chats!!! ");
+        }
         int i=0;
         for (Chat chat : chats) {
             User user=userService.get(chat.getUser2Id());
