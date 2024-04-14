@@ -31,11 +31,10 @@ public class SettingView {
             switch (menu){
                 case 1-> addKontakt();
                 case 2->createGroup();
-                case 3-> addBio();
-                case 4-> viewProfile();
-                case 5-> changeName();
-                case 6-> changeNumber();
-                case 7-> deleteAccount();
+                case 3-> viewProfile();
+                case 4-> changeName();
+                case 5-> changeNumber();
+                case 6-> deleteAccount();
                 case 0-> {
                     return;
                 }
@@ -83,11 +82,10 @@ public class SettingView {
         System.out.println("""
                 1.Add kontakt
                 2.Create Group
-                3.Add bio
-                4.View profile
-                5.Change name
-                6.Change number
-                7.Delete account
+                3.View profile
+                4.Change name
+                5.Change number
+                6.Delete account
                 0.Exit
                 """);
       return   ScanUtil.intScan("Choose: ");
