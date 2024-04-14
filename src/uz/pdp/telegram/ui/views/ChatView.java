@@ -125,7 +125,6 @@ public static void chatPart() {
             i++;
         }
 
-
         return chats;
     }
 

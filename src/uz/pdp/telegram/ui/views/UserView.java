@@ -27,6 +27,7 @@ public class UserView {
     static ChatService chatService = ChatServiceImpl.getInstance();
 
     public static void userProfile() {
+        System.out.println("Your account created !!! ");
         while (true) {
             int option = menu();
             switch (option) {

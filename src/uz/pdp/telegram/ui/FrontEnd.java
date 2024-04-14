@@ -21,6 +21,7 @@ public class FrontEnd {
                 }
                 case 2->{
                     LoginViews.signUp();
+                    UserView.userProfile();
                 }
             }
         }
