@@ -13,6 +13,16 @@ public class ChatServiceImpl implements ChatService {
         this.chatList = new ArrayList<>();
     }
 
+    @Override
+    public List<Chat> unKnownChat(String myID) {
+        List<Chat>chats=new ArrayList<>();
+        for (Chat chat : chatList) {
+            if(chat.getUser2Id().equals(myID)){
+                chats.add(chat);
+            }
+        }
+        return chats;
+    }
 
     @Override
     public List<Chat> seeAllMyChats(String userId) {

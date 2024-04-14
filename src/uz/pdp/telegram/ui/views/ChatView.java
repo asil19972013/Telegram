@@ -15,6 +15,7 @@ import uz.pdp.telegram.backend.service.userService.UserServiceImpl;
 import uz.pdp.telegram.ui.FrontEnd;
 import uz.pdp.telegram.ui.utils.ScanUtil;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.List;
@@ -38,7 +39,8 @@ public class ChatView {
         return ScanUtil.intScan("Choose: ");
     }
 
-    public static void createChat() {
+   /* public static void createChat() {
+        unKnownUsers();
         List<User> users = userService.getAll();
         boolean equals=false;
         User user2 = null;
@@ -55,7 +57,7 @@ public class ChatView {
         } else {
             System.out.print("Do not have this account in telegram");
         }
-        }
+        }*/
 
 
 
@@ -79,32 +81,30 @@ public static void delete(){
 
 
 
-    public static void chatWhithUser() {
-        List<Chat> chats = chatService.seeAllMyChats(FrontEnd.curUser.getId());
-        int i=0;
-        for (Chat chat : chats) {
-            User user=userService.get(chat.getUser2Id());
-            System.out.println(i+1+"-"+user.getUsername());
-            i++;
-        }
-        if(!(chats.isEmpty())) {
-            Chat chat = chats.get(ScanUtil.intScan("Choose: ") - 1);
-            String word = ScanUtil.strScan("============");
-            String showStatus = MassageStatus.show();
-            System.out.println(showStatus);
-            MassageStatus status = MassageStatus.getStatus(ScanUtil.intScan("Choose: "));
-            LocalDateTime localDateTime=LocalDateTime.now();
-            Massage massage = new Massage(FrontEnd.curUser.getId(), chat.getUser2Id(), word, status,localDateTime);
-            massageService.create(massage);
-        }
-        else System.out.println("You have not existed chats❌❌❌");
-    }
 
 
+public static void chatPart() {
+    List<Chat> chats = myChats();
+    boolean isTrue = true;
+        if (!(chats.isEmpty())) {
+            User user = userService.get(chats.get(ScanUtil.intScan("Choose: ") - 1).getUser2Id());
+            while (isTrue) {
+                List<Massage> massages = massageService.throughUserSeeAllMassages(FrontEnd.curUser.getId(), user.getId());
+                for (Massage massage : massages) {
+                    System.out.println(massage.getWord());
+                }
+                Integer i = ScanUtil.intScan("0.Back \n1.Massage");
+                if (i == 0) return;
+                String strMass = ScanUtil.strScan("");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Massage massage = new Massage(FrontEnd.curUser.getId(), user.getId(), strMass, MassageStatus.UNREADED, simpleDateFormat);
+                massageService.create(massage);
+            }
+        }else System.out.println("You do not have users👩‍💻👩‍💻👩‍💻");
 
+}
 
-
-    public static void chatPart() {
+   /* public static void chatPart() {
         while (true) {
             int options = menu();
             switch (options){
@@ -117,7 +117,19 @@ public static void delete(){
                 default -> System.out.println("Wrong option. Please try again❌❌❌");
             }
         }
-    }
+    }*/
 
+    public static List<Chat>myChats(){
+        List<Chat> chats = chatService.seeAllMyChats(FrontEnd.curUser.getId());
+        int i=1;
+        for (Chat chat : chats) {
+            User user = userService.get(chat.getUser2Id());
+            System.out.println(i+"-"+user.getUsername());
+            i++;
+        }
+
+
+        return chats;
+    }
 
 }

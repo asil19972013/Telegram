@@ -23,7 +23,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class MassageView {
-    private static final MassageService massageService = MassageServiceImpl.getInstance();
+  /*  private static final MassageService massageService = MassageServiceImpl.getInstance();
     private static final UserService userService = UserServiceImpl.getInstance();
     private static void massagepart(){
         while (true){
@@ -36,8 +36,8 @@ public class MassageView {
                 default -> System.out.println("Invalid opsion. Please try again !");
             }
         }
-    }
-    public  static void usersMassages(){
+    }*/
+   /* public  static void usersMassages(){
         List<User> allUsers = userService.getAll();
         if (!allUsers.isEmpty()){
             int i = 0;
@@ -57,7 +57,7 @@ public class MassageView {
         }else {
             System.out.println("Error");
         }
-    }
+    }*/
 //    static MassageService massageService= MassageServiceImpl.getInstance();
 //    static ChatService chatService= aChatServiceImpl.getInstance();
 //    static UserService userService= UserServiceImpl.getInstance();

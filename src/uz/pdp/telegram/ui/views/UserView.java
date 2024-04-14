@@ -12,11 +12,13 @@ import uz.pdp.telegram.ui.utils.ScanUtil;
 import java.util.List;
 
 public class UserView {
+    static UserService userService=UserServiceImpl.getInstance();
     public static int menu(){
         System.out.println("""
-                1.chat
-                2.group
+                1.Chat
+                2.Group
                 3.Search
+                4.Settings
                 0.Exit
                 """);
         return ScanUtil.intScan("Choose: ");
@@ -26,18 +28,12 @@ public class UserView {
 
     public static void userProfile() {
         while (true) {
-            ChatView.allChats();
-            List<Chat> chats = chatService.seeAllMyChats(FrontEnd.curUser.getId());
-            if (chats==null){
-            int choose= ScanUtil.intScan("Choose chat: ")-1;
-
-            }
-
             int option = menu();
             switch (option) {
                 case 1 -> ChatView.chatPart();
                 case 2 -> GroupView.groupPart();
                 case 3 -> ChatView.allChats();
+                case 4 -> SettingView.settingPart();
                 case 0 -> {
                     return;
                 }
@@ -46,7 +42,15 @@ public class UserView {
 
     }
 
-
+    public static List<User> allMyUsers(){
+        List<User> all = userService.getAll();
+        int i=0;
+        for (User user : all) {
+            System.out.println(i+1+"-"+user.getUsername());
+            i++;
+        }
+        return all;
+    }
 
 
 }

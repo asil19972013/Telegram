@@ -51,7 +51,7 @@ public class MassageServiceImpl implements MassageService{
     public List<Massage> throughUserSeeAllMassages(String myId,String userId) {
         List<Massage>massageList1=new ArrayList<>();
         for (Massage massage : massageList) {
-            if(massage.getTo().equals(myId)&&massage.getFrom().equals(userId)){
+            if(massage.getTo().equals(myId)&&massage.getFrom().equals(userId) || massage.getFrom().equals(myId)&&massage.getTo().equals(userId)){
                 massageList1.add(massage);
             }
         }

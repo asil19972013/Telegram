@@ -3,6 +3,7 @@ package uz.pdp.telegram.backend.model;
 import uz.pdp.telegram.backend.enums.MassageStatus;
 import uz.pdp.telegram.backend.enums.MassageType;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -18,25 +19,25 @@ public class Massage extends BaceModel {
 
     private MassageStatus massageStatus;
 
-    private LocalDateTime date;
+    private SimpleDateFormat simpleDateFormat;
 
     private MassageType massageType;
 
 
 
-    public Massage(String from, String to,String word,MassageStatus massageStatus,LocalDateTime localDate) {
+    public Massage(String from, String to,String word,MassageStatus massageStatus, SimpleDateFormat simpleDateFormat) {
         this.from = from;
         this.to = to;
         this.word=word;
         this.massageStatus=massageStatus;
-        this.date=localDate;
+        this.simpleDateFormat=simpleDateFormat;
     }
 
-    public Massage(String from, String to,String word,LocalDateTime localDate) {
+    public Massage(String from, String to,String word,SimpleDateFormat simpleDateFormat) {
         this.from = from;
         this.to = to;
         this.word=word;
-        this.date=localDate;
+        this.simpleDateFormat=simpleDateFormat;
     }
 
     public String getFrom() {
@@ -79,12 +80,12 @@ public class Massage extends BaceModel {
         this.word = word;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public SimpleDateFormat getSimpleDateFormat() {
+        return simpleDateFormat;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setSimpleDateFormat(SimpleDateFormat simpleDateFormat) {
+        this.simpleDateFormat = simpleDateFormat;
     }
 
     public MassageType getMassageType() {
