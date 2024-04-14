@@ -32,7 +32,7 @@ public class LoginViews {
     public static void signUp() {
         System.out.println("Enter SignUp Info-->");
         String username = ScanUtil.strScan("Username: ");
-        String phone= ScanUtil.strScan("Phone: ");
+        String phone= ScanUtil.strScan("Phone +998: ");
         String password = ScanUtil.strScan("Password: ");
         User user=new User(username,phone,password);
         userService.create(user);
