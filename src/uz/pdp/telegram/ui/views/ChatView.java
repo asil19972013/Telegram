@@ -112,6 +112,7 @@ public static void seeChats(){
 
 
     public static void chatPart() {
+        System.out.println("Login successfull !!!");
         while (true) {
             int options = menu();
             switch (options){
