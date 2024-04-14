@@ -31,7 +31,7 @@ public class SettingView {
             System.out.println();
             switch (menu){
                 case 1->ChatView.chatSetting();
-                case 2->ChatView.chatSetting();
+                case 2->GroupView.groupSetting();
                 case 3-> profileSetting();
                 case 0-> {
                     return;
