@@ -51,10 +51,6 @@ public class ChatView {
         }
     }
 
-
-
-
-
 public static void chatPart() {
     List<Chat> chats = myChats();
     boolean isTrue = true;

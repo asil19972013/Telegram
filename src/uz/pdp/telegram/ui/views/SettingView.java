@@ -61,7 +61,7 @@ public class SettingView {
         List<User> users = userService.getAll();
         boolean equals=false;
         User user2 = null;
-        String choose=ScanUtil.strScan("Enter phone number +998: ");
+        String choose=ScanUtil.strScan("Enter users number +998: ");
         for (User user : users) {
             equals = user.getPhone().equals(choose);
             if (equals){
