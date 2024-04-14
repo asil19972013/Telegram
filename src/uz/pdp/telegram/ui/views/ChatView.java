@@ -39,8 +39,8 @@ public class ChatView {
         return ScanUtil.intScan("Choose: ");
     }
 
-   /* public static void createChat() {
-        unKnownUsers();
+    public static void createChat() {
+
         List<User> users = userService.getAll();
         boolean equals=false;
         User user2 = null;
@@ -57,7 +57,7 @@ public class ChatView {
         } else {
             System.out.print("Do not have this account in telegram");
         }
-        }*/
+        }
    public static void delete(){
        allChats();
        List<Chat> all = chatService.getAll();

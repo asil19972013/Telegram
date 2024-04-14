@@ -55,12 +55,24 @@ public class SettingView {
 
     }
 
-
     private static void addKontakt() {
-        List<User> users = UserView.allMyUsers();
-        User user = users.get(ScanUtil.intScan("Choose: ") - 1);
-        Chat chat=new Chat(FrontEnd.curUser.getId(),user.getId());
-        chatService.create(chat);
+        List<User> users = userService.getAll();
+        boolean equals=false;
+        User user2 = null;
+        String choose=ScanUtil.strScan("Enter phone number +998: ");
+        for (User user : users) {
+            equals = user.getPhone().equals(choose);
+            if (equals){
+                user2=user;}
+        }
+        if(equals){
+            Chat chat = new Chat(FrontEnd.curUser.getId(), user2.getId());
+            chatService.create(chat);
+            System.out.println("Successfully added!!!");
+        } else {
+            System.out.print("Do not have this account in telegram");
+        }
+
     }
     public static void addBio(){
 
