@@ -28,6 +28,23 @@ public class GroupView {
     static MassageService massageService= MassageServiceImpl.getInstance();
 
 
+
+    public static void groupSetting(){
+        while (true) {
+            int menu = ScanUtil.intScan("1.create group \n2.delet group \n0 exit \nchoose: ");
+            System.out.println();
+            switch (menu){
+                case 1->createGroup();
+                case 2->createGroup();
+                case 0-> {
+                    return;
+                }
+                default -> System.out.println("Wrong option try again!!!");
+            }
+            System.out.println();
+        }
+    }
+
     public static void createGroup(){
         String groupName=ScanUtil.strScan("Enter group name");
         Group group=new Group(groupName,FrontEnd.curUser.getId());

@@ -30,6 +30,22 @@ public class ChatView {
     static MassageService massageService= MassageServiceImpl.getInstance();
 
 
+    public static void chatSetting(){
+        while (true) {
+            int menu = ScanUtil.intScan("1.create contact \n2.delet chat \n0 exit \nchoose: ");
+            System.out.println();
+            switch (menu){
+                case 1->addKontakt();
+                case 2->deleteChat();
+                case 3-> myChats();
+                case 0-> {
+                    return;
+                }
+                default -> System.out.println("Wrong option try again!!!");
+            }
+            System.out.println();
+        }
+    }
 
 public static void chatPart() {
     List<Chat> chats = myChats();
@@ -52,16 +68,7 @@ public static void chatPart() {
 
 }
 
-  public static void menu(){
-      int choose= ScanUtil.intScan("1.Add contact 2.Delete chat 3.exit \nChoose: ");
-      switch (choose){
-          case 1->addKontakt();
-          case 2->deleteChat();
-          case 0-> {
-              return;
-          }
-      }
-  }
+
 
 public static void deleteChat(){
        myChats();

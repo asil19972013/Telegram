@@ -22,8 +22,6 @@ import java.util.List;
 
 
 public class SettingView {
-    static ChatService chatService= ChatServiceImpl.getInstance();
-    static GroupService groupService = GroupServiceImpl.getInstance();
     static UserService userService = UserServiceImpl.getInstance();
 
 
@@ -32,8 +30,8 @@ public class SettingView {
             int menu = menu();
             System.out.println();
             switch (menu){
-                case 1->chatSetting();
-                case 2->groupSetting();
+                case 1->ChatView.chatSetting();
+                case 2->ChatView.chatSetting();
                 case 3-> profileSetting();
                 case 0-> {
                     return;
@@ -44,52 +42,6 @@ public class SettingView {
         }
     }
 
-    public static void chatSetting(){
-        while (true) {
-            int menu = ScanUtil.intScan("1.create contact \n2.delet chat \n0 exit \nchoose: ");
-            System.out.println();
-            switch (menu){
-                case 1->addKontakt();
-                case 2->createGroup();
-                case 3-> viewProfile();
-                case 0-> {
-                    return;
-                }
-                default -> System.out.println("Wrong option try again!!!");
-            }
-            System.out.println();
-        }
-    }
-
-    public static void groupSetting(){
-        while (true) {
-            int menu = ScanUtil.intScan("1.create group \n2.delet group \n0 exit \nchoose: ");
-            System.out.println();
-            switch (menu){
-                case 1->createGroup();
-                case 2->createGroup();
-                case 3-> viewProfile();
-                case 0-> {
-                    return;
-                }
-                default -> System.out.println("Wrong option try again!!!");
-            }
-            System.out.println();
-        }
-    }
-
-
-    public static void createGroup(){
-        String groupName=ScanUtil.strScan("Enter group name: ");
-        Group group=new Group(groupName,FrontEnd.curUser.getId());
-        groupService.create(group);
-        System.out.println("Sucseesfully added✅✅✅");
-
-    }
-
-    public static void addBio(){
-
-    }
    public static void viewProfile(){
        System.out.println("Your name: "+FrontEnd.curUser.getUsername());
        System.out.println("Your phone number: "+FrontEnd.curUser.getPhone());
@@ -121,34 +73,16 @@ public class SettingView {
                 """);
       return   ScanUtil.intScan("Choose: ");
     }
-    private static void addKontakt() {
-        List<User> users = userService.getAll();
-        boolean equals=false;
-        User user2 = null;
-        String choose=ScanUtil.strScan("Enter users number +998: ");
-        for (User user : users) {
-            equals = user.getPhone().equals(choose);
-            if (equals){
-                user2=user;}
-        }
-        if(equals){
-            Chat chat = new Chat(FrontEnd.curUser.getId(), user2.getId());
-            chatService.create(chat);
-            System.out.println("Successfully added!!!");
-        } else {
-            System.out.print("Do not have this account in telegram!!!");
-            System.out.println();;
-        }
 
-    }
     public static void profileSetting(){
         while (true) {
-            int menu = ScanUtil.intScan("1.change number \n2.change name \n3.view profile \n0 exit \nchoose: ");
+            int menu = ScanUtil.intScan("1.change number \n2.change name \n3.view profile \n4.delete account \n0 exit \nchoose: ");
             System.out.println();
             switch (menu){
                 case 1->changeNumber();
                 case 2->changeName();
                 case 3->viewProfile();
+                case 4->deleteAccount();
                 case 0-> {
                     return;
                 }
