@@ -32,7 +32,8 @@ public class ChatView {
     public static int menu(){
         System.out.println("""
                 1.Create chat
-                2.Delete
+                2.All chats
+                3.Delete
                 0.Exit
                 """);
         return ScanUtil.intScan("Choose: ");
@@ -53,7 +54,7 @@ public class ChatView {
             chatService.create(chat);
             System.out.println("Successfully added!!!");
         } else {
-            System.out.print("Do not have this account in telegram");
+            System.out.print("Do not have this account in telegram !!! ");
         }
         }
 
@@ -61,6 +62,10 @@ public class ChatView {
 
     public static void allChats() {
         List<Chat> chats = chatService.seeAllMyChats(FrontEnd.curUser.getId());
+        if (chats.isEmpty()){
+            System.out.println("You do not have any accounts !!! ");
+        }
+
         int i=0;
         for (Chat chat : chats) {
             User user=userService.get(chat.getUser2Id());
@@ -100,7 +105,9 @@ public static void delete(){
         else System.out.println("You have not existed chats❌❌❌");
     }
 
+public static void seeChats(){
 
+}
 
 
 

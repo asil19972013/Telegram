@@ -1,12 +1,7 @@
 package uz.pdp.telegram.ui.views;
 
-import uz.pdp.telegram.backend.enums.MassageStatus;
-import uz.pdp.telegram.backend.enums.MassageType;
-import uz.pdp.telegram.backend.model.Chat;
 import uz.pdp.telegram.backend.model.Massage;
 import uz.pdp.telegram.backend.model.User;
-import uz.pdp.telegram.backend.service.chatService.ChatService;
-import uz.pdp.telegram.backend.service.chatService.ChatServiceImpl;
 import uz.pdp.telegram.backend.service.massageService.MassageService;
 import uz.pdp.telegram.backend.service.massageService.MassageServiceImpl;
 import uz.pdp.telegram.backend.service.userService.UserService;
@@ -14,15 +9,9 @@ import uz.pdp.telegram.backend.service.userService.UserServiceImpl;
 import uz.pdp.telegram.ui.FrontEnd;
 import uz.pdp.telegram.ui.utils.ScanUtil;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
-public class MassageView {
+public class MessageView {
     private static final MassageService massageService = MassageServiceImpl.getInstance();
     private static final UserService userService = UserServiceImpl.getInstance();
     private static void massagepart(){
@@ -47,7 +36,8 @@ public class MassageView {
             }
             User selectUser = allUsers.get(ScanUtil.intScan("Choose user : ") - 1);
             List<Massage> sentMassages = massageService.seeAllMassagesByUser(FrontEnd.curUser.getId(),selectUser.getId());
-            List<Massage> receivedMassages = massageService.seeAllMassagesByUser(selectUser.getId(),FrontEnd.curUser.getId());
+            List<Massage
+                    > receivedMassages = massageService.seeAllMassagesByUser(selectUser.getId(),FrontEnd.curUser.getId());
             for (Massage massage : receivedMassages) {
                 System.out.println(massage.getWord() + " - " + massage.getDate() + " - recevied");
                 for (Massage massage1 : sentMassages) {
@@ -85,7 +75,7 @@ public class MassageView {
 
     public static int menu(){
         System.out.println("""
-                1.User's massages
+                1.Write message
                 0.Exit
                 """);
         return ScanUtil.intScan("Choose: ");

@@ -1,6 +1,7 @@
 package uz.pdp.telegram.ui;
 
 import uz.pdp.telegram.backend.model.User;
+import uz.pdp.telegram.ui.views.ChatView;
 import uz.pdp.telegram.ui.views.LoginViews;
 import uz.pdp.telegram.ui.views.UserView;
 
@@ -18,8 +19,13 @@ public class FrontEnd {
                         UserView.userProfile();
                     }
                 }
-                case 2->LoginViews.signUp();
+                case 2->{
+                    LoginViews.signUp();
+                    System.out.println();
+                    ChatView.chatPart();
+                }
             }
         }
     }
+
 }
