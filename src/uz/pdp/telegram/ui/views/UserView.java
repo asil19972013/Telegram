@@ -42,15 +42,5 @@ public class UserView {
 
     }
 
-    public static List<User> allMyUsers(){
-        List<User> all = userService.getAll();
-        int i=0;
-        for (User user : all) {
-            System.out.println(i+1+"-"+user.getUsername());
-            i++;
-        }
-        return all;
-    }
-
 
 }

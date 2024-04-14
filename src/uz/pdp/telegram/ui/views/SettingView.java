@@ -43,6 +43,7 @@ public class SettingView {
                 case 0-> {
                     return;
                 }
+                default -> System.out.println("Wrong option try again!!!");
             }
             System.out.println();
         }

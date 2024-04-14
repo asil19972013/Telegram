@@ -22,6 +22,7 @@ public class FrontEnd {
                 case 2->{
                     LoginViews.signUp();
                 }
+                default -> System.out.println("Wrong option try again!!!");
             }
         }
     }
