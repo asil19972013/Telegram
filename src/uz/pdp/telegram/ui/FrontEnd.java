@@ -18,9 +18,8 @@ public class FrontEnd {
                         UserView.userProfile();
                     }
                 }
-                case 2->{
-                    LoginViews.signUp();
-                }
+                case 2-> LoginViews.signUp();
+
                 default -> System.out.println("Wrong option try again!!!");
             }
         }

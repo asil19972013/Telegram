@@ -28,17 +28,14 @@ public class GroupView {
     static MassageService massageService= MassageServiceImpl.getInstance();
 
 
-
-
-
-
-
-
     public static void createGroup(){
         String groupName=ScanUtil.strScan("Enter group name");
         Group group=new Group(groupName,FrontEnd.curUser.getId());
         groupService.create(group);
         System.out.println("Sucseesfully added✅✅✅");
+
+    }
+    public static void groupPart(){
 
     }
 

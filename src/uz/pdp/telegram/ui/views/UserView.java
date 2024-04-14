@@ -27,11 +27,8 @@ public class UserView {
         while (true) {
             int option = menu();
             switch (option) {
-                case 1 -> {
-                    ChatView.chatPart();
-                    ChatView.menu();
-                }
-                case 2 -> GroupView.allUsers();
+                case 1 -> ChatView.chatPart();
+                case 2 -> GroupView.groupPart();
                 case 3 -> SettingView.settingPart();
                 case 0 -> {
                     return;
