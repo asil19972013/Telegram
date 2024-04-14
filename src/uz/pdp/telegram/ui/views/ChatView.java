@@ -58,8 +58,13 @@ public class ChatView {
             System.out.print("Do not have this account in telegram");
         }
         }*/
+   public static void delete(){
+       allChats();
+       List<Chat> all = chatService.getAll();
+       Chat chat = all.get(ScanUtil.intScan("Choose: ") - 1);
+       chatService.delete(chat.getId());
 
-
+   }
 
     public static void allChats() {
         List<Chat> chats = chatService.seeAllMyChats(FrontEnd.curUser.getId());
@@ -70,14 +75,6 @@ public class ChatView {
             i++;
         }
     }
-
-public static void delete(){
-        allChats();
-    List<Chat> all = chatService.getAll();
-    Chat chat = all.get(ScanUtil.intScan("Choose: ") - 1);
-    chatService.delete(chat.getId());
-
-}
 
 
 
