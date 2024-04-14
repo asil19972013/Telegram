@@ -88,16 +88,17 @@ public class SettingView {
   public static void changeName(){
       String name=ScanUtil.strScan("What is your new name: ");
       FrontEnd.curUser.setUsername(name);
+      System.out.println("Your name successfully changed!!");
   }
   public static void changeNumber(){
       String number=ScanUtil.strScan("What is your new number: ");
       FrontEnd.curUser.setPhone(number);
+      System.out.println("Your number successfully changed!!");
   }
   public static void deleteAccount(){
         userService.delete(FrontEnd.curUser.getId());
       System.out.println("Your account deleted!!!");
       FrontEnd.main();
-
   }
 
 
