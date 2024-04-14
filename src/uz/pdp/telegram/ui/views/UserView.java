@@ -17,8 +17,7 @@ public class UserView {
         System.out.println("""
                 1.Chat
                 2.Group
-                3.Search
-                4.Settings
+                3.Settings
                 0.Exit
                 """);
         return ScanUtil.intScan("Choose: ");
@@ -33,8 +32,7 @@ public class UserView {
             switch (option) {
                 case 1 -> ChatView.chatPart();
                 case 2 -> GroupView.groupPart();
-                case 3 -> ChatView.allChats();
-                case 4 -> SettingView.settingPart();
+                case 3 -> SettingView.settingPart();
                 case 0 -> {
                     return;
                 }

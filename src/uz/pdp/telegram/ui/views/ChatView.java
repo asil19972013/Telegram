@@ -30,14 +30,6 @@ public class ChatView {
     static MassageService massageService= MassageServiceImpl.getInstance();
 
 
-   public static void delete(){
-       allChats();
-       List<Chat> all = chatService.getAll();
-       Chat chat = all.get(ScanUtil.intScan("Choose: ") - 1);
-       chatService.delete(chat.getId());
-
-   }
-
     public static void allChats() {
         List<Chat> chats = chatService.seeAllMyChats(FrontEnd.curUser.getId());
         if (chats.isEmpty()){
@@ -71,21 +63,6 @@ public static void chatPart() {
         }else System.out.println("You do not have users👩‍💻👩‍💻👩‍💻");
 
 }
-
-   /* public static void chatPart() {
-        while (true) {
-            int options = menu();
-            switch (options){
-                case 1->createChat();
-                case 2->allChats();
-                case 3->delete();
-                case 0-> {
-                    return;
-                }
-                default -> System.out.println("Wrong option. Please try again❌❌❌");
-            }
-        }
-    }*/
 
     public static List<Chat>myChats(){
         List<Chat> chats = chatService.seeAllMyChats(FrontEnd.curUser.getId());
