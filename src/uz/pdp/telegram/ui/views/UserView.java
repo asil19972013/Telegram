@@ -38,6 +38,7 @@ public class UserView {
                 case 0 -> {
                     return;
                 }
+                default -> System.out.println("Wrong option try again!!!");
             }
         }
 

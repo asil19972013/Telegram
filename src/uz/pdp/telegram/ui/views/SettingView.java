@@ -12,6 +12,8 @@ import uz.pdp.telegram.backend.service.groupService.GroupService;
 import uz.pdp.telegram.backend.service.groupService.GroupServiceImpl;
 import uz.pdp.telegram.backend.service.massageService.MassageService;
 import uz.pdp.telegram.backend.service.massageService.MassageServiceImpl;
+import uz.pdp.telegram.backend.service.userService.UserService;
+import uz.pdp.telegram.backend.service.userService.UserServiceImpl;
 import uz.pdp.telegram.ui.FrontEnd;
 import uz.pdp.telegram.ui.utils.ScanUtil;
 
@@ -24,6 +26,8 @@ public class SettingView {
     static GroupService groupService = GroupServiceImpl.getInstance();
     static GroupChatService groupChatService = GroupChatServiceImpl.getInstance();
     static MassageService massageService = MassageServiceImpl.getInstance();
+    static UserService userService = UserServiceImpl.getInstance();
+
 
     public static void settingPart() {
         while (true) {
@@ -62,9 +66,11 @@ public class SettingView {
 
     }
    public static void viewProfile(){
+       System.out.println();
        System.out.println("Your name: "+FrontEnd.curUser.getUsername());
        System.out.println("Your phone number: "+FrontEnd.curUser.getPhone());
        System.out.println("Your phone password: "+FrontEnd.curUser.getPassword());
+       System.out.println();
   }
   public static void changeName(){
       String name=ScanUtil.strScan("What is your new name: ");
@@ -75,6 +81,10 @@ public class SettingView {
       FrontEnd.curUser.setPhone(number);
   }
   public static void deleteAccount(){
+        userService.delete(FrontEnd.curUser.getId());
+      System.out.println("Your account deleted!!!");
+      FrontEnd.main();
+
   }
 
 
