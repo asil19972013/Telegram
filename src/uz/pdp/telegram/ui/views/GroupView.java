@@ -35,7 +35,8 @@ public class GroupView {
             System.out.println();
             switch (menu){
                 case 1->createGroup();
-                case 2->createGroup();
+                case 2->deleteGroup();
+                case 3->addUsersToGroup();
                 case 0-> {
                     return;
                 }
@@ -46,7 +47,7 @@ public class GroupView {
     }
 
     public static void createGroup(){
-        String groupName=ScanUtil.strScan("Enter group name");
+        String groupName=ScanUtil.strScan("Enter group name: ");
         Group group=new Group(groupName,FrontEnd.curUser.getId());
         groupService.create(group);
         System.out.println("Sucseesfully added✅✅✅");
@@ -98,7 +99,7 @@ public class GroupView {
     }
 
 
-    public static List<User>  allUsers(){
+    public static List<User>allUsers(){
         List<User> users= userService.getAll();
         int i=0;
         for (User user : users) {
