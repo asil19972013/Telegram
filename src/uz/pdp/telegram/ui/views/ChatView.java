@@ -30,34 +30,6 @@ public class ChatView {
     static MassageService massageService= MassageServiceImpl.getInstance();
 
 
-    public static int menu(){
-        System.out.println("""
-                1.Create chat
-                2.Delete
-                0.Exit
-                """);
-        return ScanUtil.intScan("Choose: ");
-    }
-
-    public static void createChat() {
-
-        List<User> users = userService.getAll();
-        boolean equals=false;
-        User user2 = null;
-        String choose=ScanUtil.strScan("Enter phone number: ");
-        for (User user : users) {
-            equals = user.getPhone().equals(choose);
-            if (equals){
-            user2=user;}
-        }
-        if(equals){
-            Chat chat = new Chat(FrontEnd.curUser.getId(), user2.getId());
-            chatService.create(chat);
-            System.out.println("Successfully added!!!");
-        } else {
-            System.out.print("Do not have this account in telegram");
-        }
-        }
    public static void delete(){
        allChats();
        List<Chat> all = chatService.getAll();
@@ -74,7 +46,7 @@ public class ChatView {
         int i=0;
         for (Chat chat : chats) {
             User user=userService.get(chat.getUser2Id());
-            System.out.println(i+1+"-"+user.getUsername());
+            System.out.println(i+1+" "+user.getUsername());
             i++;
         }
     }
@@ -124,7 +96,7 @@ public static void chatPart() {
         int i=1;
         for (Chat chat : chats) {
             User user = userService.get(chat.getUser2Id());
-            System.out.println(i+"-"+user.getUsername());
+            System.out.println(i+" "+user.getUsername());
             i++;
         }
 

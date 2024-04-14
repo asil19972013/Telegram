@@ -32,6 +32,7 @@ public class SettingView {
     public static void settingPart() {
         while (true) {
             int menu = menu();
+            System.out.println();
             switch (menu){
                 case 1-> addKontakt();
                 case 2->createGroup();
@@ -43,6 +44,7 @@ public class SettingView {
                     return;
                 }
             }
+            System.out.println();
         }
     }
 
@@ -71,6 +73,7 @@ public class SettingView {
             System.out.println("Successfully added!!!");
         } else {
             System.out.print("Do not have this account in telegram");
+            System.out.println();;
         }
 
     }
