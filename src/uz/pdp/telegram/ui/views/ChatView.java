@@ -50,7 +50,41 @@ public static void chatPart() {
             }
         }else System.out.println("You do not have users👩‍💻👩‍💻👩‍💻");
 
+
+        int choose= ScanUtil.intScan("1.Add contact 2.Delete chat \nChoose: ");
+        switch (choose){
+            case 1->addKontakt();
+            case 2->deleteChat();
+        }
 }
+public static void deleteChat(){
+       myChats();
+       int choose= ScanUtil.intScan("Enter deletiton person: ");
+
+
+
+}
+    private static void addKontakt() {
+        List<User> users = userService.getAll();
+        boolean equals=false;
+        User user2 = null;
+        String choose=ScanUtil.strScan("Enter users number +998: ");
+        for (User user : users) {
+            equals = user.getPhone().equals(choose);
+            if (equals){
+                user2=user;}
+        }
+        if(equals){
+            Chat chat = new Chat(FrontEnd.curUser.getId(), user2.getId());
+            chatService.create(chat);
+            System.out.println("Successfully added!!!");
+        } else {
+            System.out.print("Do not have this account in telegram!!!");
+            System.out.println();;
+        }
+
+    }
+
 
     public static List<Chat>myChats(){
         List<Chat> chats = chatService.seeAllMyChats(FrontEnd.curUser.getId());

@@ -32,12 +32,11 @@ public class SettingView {
             int menu = menu();
             System.out.println();
             switch (menu){
-                case 1-> addKontakt();
-                case 2->createGroup();
-                case 3-> viewProfile();
-                case 4-> changeName();
-                case 5-> changeNumber();
-                case 6-> deleteAccount();
+                case 1->createGroup();
+                case 2-> viewProfile();
+                case 3-> changeName();
+                case 4-> changeNumber();
+                case 5-> deleteAccount();
                 case 0-> {
                     return;
                 }
@@ -56,26 +55,6 @@ public class SettingView {
 
     }
 
-    private static void addKontakt() {
-        List<User> users = userService.getAll();
-        boolean equals=false;
-        User user2 = null;
-        String choose=ScanUtil.strScan("Enter users number +998: ");
-        for (User user : users) {
-            equals = user.getPhone().equals(choose);
-            if (equals){
-                user2=user;}
-        }
-        if(equals){
-            Chat chat = new Chat(FrontEnd.curUser.getId(), user2.getId());
-            chatService.create(chat);
-            System.out.println("Successfully added!!!");
-        } else {
-            System.out.print("Do not have this account in telegram!!!");
-            System.out.println();;
-        }
-
-    }
     public static void addBio(){
 
     }

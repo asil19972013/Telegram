@@ -22,15 +22,13 @@ public class UserView {
         return ScanUtil.intScan("Choose: ");
     }
 
-    static ChatService chatService = ChatServiceImpl.getInstance();
-
     public static void userProfile() {
         System.out.println("Your account created !!! ");
         while (true) {
             int option = menu();
             switch (option) {
                 case 1 -> ChatView.chatPart();
-                case 2 -> GroupView.groupPart();
+                case 2 -> GroupView.allUsers();
                 case 3 -> SettingView.settingPart();
                 case 0 -> {
                     return;

@@ -27,15 +27,13 @@ public class GroupView {
     static UserService userService= UserServiceImpl.getInstance();
     static MassageService massageService= MassageServiceImpl.getInstance();
 
-    public static int menu(){
-        System.out.println("""
-                1.Create group
-                2.Add users to group
-                3.Delete group
-                0.Exit""");
-        return ScanUtil.intScan("Choose ");
 
-    }
+
+
+
+
+
+
     public static void createGroup(){
         String groupName=ScanUtil.strScan("Enter group name");
         Group group=new Group(groupName,FrontEnd.curUser.getId());
@@ -44,24 +42,6 @@ public class GroupView {
 
     }
 
-
-    public static void groupPart() {
-          while (true){
-              int option =menu();
-              switch (option){
-                  case 1->createGroup();
-                  case 2->addUsersToGroup();
-                  case 3->deleteGroup();
-                  case 0-> {
-                      return;
-                  }
-
-
-              }
-
-          }
-
-    }
 
     private static void addUsersToGroup() {
         List<Group> groups = seeAllMyGroups();
