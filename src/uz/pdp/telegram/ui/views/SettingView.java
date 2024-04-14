@@ -117,6 +117,7 @@ public class SettingView {
                 1.Chat setting
                 2.Groups setting
                 3.Profile setting
+                0.exit
                 """);
       return   ScanUtil.intScan("Choose: ");
     }
