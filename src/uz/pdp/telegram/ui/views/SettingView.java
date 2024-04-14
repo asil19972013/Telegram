@@ -72,7 +72,7 @@ public class SettingView {
             chatService.create(chat);
             System.out.println("Successfully added!!!");
         } else {
-            System.out.print("Do not have this account in telegram");
+            System.out.print("Do not have this account in telegram!!!");
             System.out.println();;
         }
 
@@ -91,7 +91,7 @@ public class SettingView {
       System.out.println("Your name successfully changed!!");
   }
   public static void changeNumber(){
-      String number=ScanUtil.strScan("What is your new number: ");
+      String number=ScanUtil.strScan("What is your new number +998: ");
       FrontEnd.curUser.setPhone(number);
       System.out.println("Your number successfully changed!!");
   }
