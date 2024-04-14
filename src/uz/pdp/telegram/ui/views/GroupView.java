@@ -94,6 +94,7 @@ public class GroupView {
     }
 
     public static void deleteGroup() {
+        if(seeAllMyGroups().isEmpty()) return;
         List<Group> groups = seeAllMyGroups();
         Group group = groups.get(ScanUtil.intScan("Choose: ") - 1);
         groupService.delete(group.getId());
