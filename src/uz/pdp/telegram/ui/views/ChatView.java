@@ -57,7 +57,7 @@ public static void chatPart() {
                 for (Massage massage : massages) {
                     System.out.println(massage.getWord());
                 }
-                Integer i = ScanUtil.intScan("0.Back 1.Massage \n choose: ");
+                Integer i = ScanUtil.intScan("0.Back 1.Massage \nchoose: ");
                 if (i == 0) return;
                 String strMass = ScanUtil.strScan("write a message here: ");
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");

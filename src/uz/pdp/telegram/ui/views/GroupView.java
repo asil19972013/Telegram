@@ -56,6 +56,7 @@ public class GroupView {
     public static void groupPart(){
         seeAllMyGroups();
 
+
     }
 
 
@@ -65,7 +66,7 @@ public class GroupView {
         List<User> all = userService.getAll();
         int i=0;
         for (User user : all) {
-            System.out.println(user.getUsername());
+            System.out.println(i+1+" "+user.getUsername());
             i++;
         }
         User user = all.get(ScanUtil.intScan("Choose: ") - 1);
@@ -84,7 +85,7 @@ public class GroupView {
         }
         else {
             for (Group group : groups) {
-                System.out.println(i+1+"-"+group.getGroupName());
+                System.out.println(i+1+" "+group.getGroupName());
                 i++;
             }
         }
