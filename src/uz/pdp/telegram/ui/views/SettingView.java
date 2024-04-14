@@ -32,11 +32,43 @@ public class SettingView {
             int menu = menu();
             System.out.println();
             switch (menu){
+                case 1->chatSetting();
+                case 2->groupSetting();
+                case 3-> profileSetting();
+                case 0-> {
+                    return;
+                }
+                default -> System.out.println("Wrong option try again!!!");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void chatSetting(){
+        while (true) {
+            int menu = ScanUtil.intScan("1.create contact \n 2.delet chat \n 0 exit \n choose: ");
+            System.out.println();
+            switch (menu){
+                case 1->addKontakt();
+                case 2->createGroup();
+                case 3-> viewProfile();
+                case 0-> {
+                    return;
+                }
+                default -> System.out.println("Wrong option try again!!!");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void groupSetting(){
+        while (true) {
+            int menu = ScanUtil.intScan("1.create group \n 2.delet group \n 0 exit \n choose: ");
+            System.out.println();
+            switch (menu){
                 case 1->createGroup();
-                case 2-> viewProfile();
-                case 3-> changeName();
-                case 4-> changeNumber();
-                case 5-> deleteAccount();
+                case 2->createGroup();
+                case 3-> viewProfile();
                 case 0-> {
                     return;
                 }
@@ -82,15 +114,47 @@ public class SettingView {
 
     public static int menu(){
         System.out.println("""
-                1.Add kontakt
-                2.Create Group
-                3.View profile
-                4.Change name
-                5.Change number
-                6.Delete account
-                0.Exit
+                1.Chat setting
+                2.Groups setting
+                3.Profile setting
                 """);
       return   ScanUtil.intScan("Choose: ");
+    }
+    private static void addKontakt() {
+        List<User> users = userService.getAll();
+        boolean equals=false;
+        User user2 = null;
+        String choose=ScanUtil.strScan("Enter users number +998: ");
+        for (User user : users) {
+            equals = user.getPhone().equals(choose);
+            if (equals){
+                user2=user;}
+        }
+        if(equals){
+            Chat chat = new Chat(FrontEnd.curUser.getId(), user2.getId());
+            chatService.create(chat);
+            System.out.println("Successfully added!!!");
+        } else {
+            System.out.print("Do not have this account in telegram!!!");
+            System.out.println();;
+        }
+
+    }
+    public static void profileSetting(){
+        while (true) {
+            int menu = ScanUtil.intScan("1.change number \n2.change name \n3.view profile \n0 exit \nchoose: ");
+            System.out.println();
+            switch (menu){
+                case 1->changeNumber();
+                case 2->changeName();
+                case 3->viewProfile();
+                case 0-> {
+                    return;
+                }
+                default -> System.out.println("Wrong option try again!!!");
+            }
+            System.out.println();
+        }
     }
 
 

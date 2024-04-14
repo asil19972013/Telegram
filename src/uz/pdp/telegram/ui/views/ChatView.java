@@ -48,15 +48,21 @@ public static void chatPart() {
                 Massage massage = new Massage(FrontEnd.curUser.getId(), user.getId(), strMass, MassageStatus.UNREADED, simpleDateFormat);
                 massageService.create(massage);
             }
-        }else System.out.println("You do not have users👩‍💻👩‍💻👩‍💻");
+        }else {System.out.println("You do not have users👩‍💻👩‍💻👩‍💻");}
 
-
-        int choose= ScanUtil.intScan("1.Add contact 2.Delete chat \nChoose: ");
-        switch (choose){
-            case 1->addKontakt();
-            case 2->deleteChat();
-        }
 }
+
+  public static void menu(){
+      int choose= ScanUtil.intScan("1.Add contact 2.Delete chat 3.exit \nChoose: ");
+      switch (choose){
+          case 1->addKontakt();
+          case 2->deleteChat();
+          case 0-> {
+              return;
+          }
+      }
+  }
+
 public static void deleteChat(){
        myChats();
        int choose= ScanUtil.intScan("Enter deletiton person: ");
