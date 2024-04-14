@@ -36,6 +36,14 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void delete(String id) {
+        for (int i = 0; i < userList.size(); i++) {
+          User user=userList.get(i);
+          if (user.getId().equals(id)){
+              userList.remove(i);
+              return;
+          }
+        }
+
 
     }
 
