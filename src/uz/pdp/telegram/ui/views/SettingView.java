@@ -50,7 +50,7 @@ public class SettingView {
 
 
     public static void createGroup(){
-        String groupName=ScanUtil.strScan("Enter group name");
+        String groupName=ScanUtil.strScan("Enter group name: ");
         Group group=new Group(groupName,FrontEnd.curUser.getId());
         groupService.create(group);
         System.out.println("Sucseesfully added✅✅✅");
@@ -81,11 +81,9 @@ public class SettingView {
 
     }
    public static void viewProfile(){
-       System.out.println();
        System.out.println("Your name: "+FrontEnd.curUser.getUsername());
        System.out.println("Your phone number: "+FrontEnd.curUser.getPhone());
        System.out.println("Your phone password: "+FrontEnd.curUser.getPassword());
-       System.out.println();
   }
   public static void changeName(){
       String name=ScanUtil.strScan("What is your new name: ");
