@@ -21,8 +21,6 @@ public class FrontEnd {
                 }
                 case 2->{
                     LoginViews.signUp();
-                    System.out.println();
-                    ChatView.chatPart();
                 }
             }
         }
