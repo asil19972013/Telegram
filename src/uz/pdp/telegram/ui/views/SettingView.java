@@ -46,7 +46,7 @@ public class SettingView {
 
     public static void chatSetting(){
         while (true) {
-            int menu = ScanUtil.intScan("1.create contact \n 2.delet chat \n 0 exit \n choose: ");
+            int menu = ScanUtil.intScan("1.create contact \n2.delet chat \n0 exit \nchoose: ");
             System.out.println();
             switch (menu){
                 case 1->addKontakt();
@@ -63,7 +63,7 @@ public class SettingView {
 
     public static void groupSetting(){
         while (true) {
-            int menu = ScanUtil.intScan("1.create group \n 2.delet group \n 0 exit \n choose: ");
+            int menu = ScanUtil.intScan("1.create group \n2.delet group \n0 exit \nchoose: ");
             System.out.println();
             switch (menu){
                 case 1->createGroup();
