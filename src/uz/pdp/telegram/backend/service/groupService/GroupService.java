@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface GroupService extends BaceService<Group> {
 List<Group>allMyGroups(String ownerId);
+
 }
