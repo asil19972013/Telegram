@@ -59,4 +59,16 @@ public class GroupChatServiceImpl implements GroupChatService{
         }
         return  groupChatService;
     }
+
+
+    @Override
+    public List<GroupChat> allunKnownGroup(String ownId) {
+        List<GroupChat>list=new ArrayList<>();
+        for (GroupChat group : groupChatList) {
+            if(Objects.equals(group.getUserId(),ownId)){
+                list.add(group);
+            }
+        }
+        return list;
+    }
 }

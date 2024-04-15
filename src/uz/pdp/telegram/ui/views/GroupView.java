@@ -23,35 +23,21 @@ import java.util.*;
 
 public class GroupView {
 
-    static GroupChatService groupChatService= GroupChatServiceImpl.getInstance();
-    static GroupService groupService= GroupServiceImpl.getInstance();
-    static UserService userService= UserServiceImpl.getInstance();
-    static MassageService massageService= MassageServiceImpl.getInstance();
+    static GroupChatService groupChatService = GroupChatServiceImpl.getInstance();
+    static GroupService groupService = GroupServiceImpl.getInstance();
+    static UserService userService = UserServiceImpl.getInstance();
+    static MassageService massageService = MassageServiceImpl.getInstance();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public static void groupSetting(){
+    public static void groupSetting() {
         while (true) {
             int menu = ScanUtil.intScan("1.create group \n2.delet group \n3.add user to group \n0.exit \nchoose: ");
             System.out.println();
-            switch (menu){
-                case 1->createGroup();
-                case 2->deleteGroup();
-                case 3->addUsersToGroup();
-                case 0-> {
+            switch (menu) {
+                case 1 -> createGroup();
+                case 2 -> deleteGroup();
+                case 3 -> addUsersToGroup();
+                case 0 -> {
                     return;
                 }
                 default -> System.out.println("Wrong option try again!!!");
@@ -60,20 +46,57 @@ public class GroupView {
         }
     }
 
-    public static void createGroup(){
-        String groupName=ScanUtil.strScan("Enter group name: ");
+    public static void createGroup() {
+        String groupName = ScanUtil.strScan("Enter group name: ");
         String show = GroupType.show();
         System.out.println(show);
         GroupType type = GroupType.getType(ScanUtil.intScan("Choose: "));
-        Group group=new Group(groupName,FrontEnd.curUser.getId(),type);
+        Group group = new Group(groupName, FrontEnd.curUser.getId(), type);
         groupService.create(group);
         System.out.println("Sucseesfully added✅✅✅");
 
     }
 
 
+    public static void groupPart() {
+        System.out.println("1.Unknown group \n2.Created group");
+        Integer option = ScanUtil.intScan("Choose: ");
+        switch (option) {
+            case 1 -> unknowm();
+            case 2 -> created();
+        }
 
-    public static void groupPart(){
+
+    }
+
+    private static void unknowm() {
+        List<GroupChat> groupChats = groupChatService.allunKnownGroup(FrontEnd.curUser.getId());
+        if(groupChats.isEmpty())return;
+        int i = 0;
+        for (GroupChat groupChat : groupChats) {
+            Group group = groupService.get(groupChat.getGroupId());
+            System.out.println(i + 1 + "-" + group.getGroupName());
+        }
+        GroupChat groupChat = groupChats.get(ScanUtil.intScan("Choose: ")-1);
+        Group group = groupService.get(groupChat.getGroupId());
+        List<Massage> massages = massageService.seeAllMassagesByGroup(FrontEnd.curUser.getId(), group.getId());
+        for (Massage massage : massages) {
+            System.out.println(massage.getWord());
+        }
+        while (true) {
+            Integer j = ScanUtil.intScan("0.Back 1.Massage \nchoose: ");
+            if (j == 0) return;
+            String word = ScanUtil.strScan("write a message here: ");
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            Massage massage = new Massage(FrontEnd.curUser.getId(), group.getId(), word, simpleDateFormat);
+            massageService.create(massage);
+        }
+    }
+
+
+
+
+       public static void created() {
         List<Group> groups = seeAllMyGroups();
         if(groups.isEmpty()){
             return;
@@ -90,10 +113,9 @@ public class GroupView {
                 String word = ScanUtil.strScan("write a message here: ");
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 Massage massage = new Massage(FrontEnd.curUser.getId(), group.getId(), word, simpleDateFormat);
-                massages.add(massage);
+                massageService.create(massage);
             }
         }
-
     }
 
 

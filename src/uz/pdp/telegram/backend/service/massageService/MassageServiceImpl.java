@@ -69,7 +69,7 @@ public class MassageServiceImpl implements MassageService{
     public List<Massage> seeAllMassagesByGroup(String adminId,String groupId) {
         List<Massage>adminMassage=new ArrayList<>();
         for (Massage massage : massageList) {
-            if(Objects.equals(massage.getFrom(),adminId)&&Objects.equals(massage.getTo(),groupId)){
+            if(Objects.equals(massage.getFrom(),adminId)||Objects.equals(massage.getTo(),groupId)){
                 adminMassage.add(massage);
             }
         }

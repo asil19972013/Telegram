@@ -39,6 +39,12 @@ public class GroupServiceImpl implements GroupService{
 
     @Override
     public Group get(String id) {
+        for (int i = 0; i < groupList.size(); i++) {
+            Group group = groupList.get(i);
+            if(Objects.equals(group.getId(),id)){
+                return group;
+            }
+        }
         return null;
     }
 
@@ -68,4 +74,5 @@ public class GroupServiceImpl implements GroupService{
         }
         return list;
     }
+
 }
