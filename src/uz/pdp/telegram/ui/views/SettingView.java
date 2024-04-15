@@ -60,7 +60,7 @@ public class SettingView {
   public static void deleteAccount(){
         userService.delete(FrontEnd.curUser.getId());
       System.out.println("Your account deleted!!!");
-      FrontEnd.main();
+
   }
 
 
