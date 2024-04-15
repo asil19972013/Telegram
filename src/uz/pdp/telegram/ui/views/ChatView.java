@@ -32,7 +32,7 @@ public class ChatView {
 
     public static void chatSetting(){
         while (true) {
-            int menu = ScanUtil.intScan("1.create contact \n2.delet chat \n0 exit \nchoose: ");
+            int menu = ScanUtil.intScan("1.create contact \n2.delete contact \n0 exit \nchoose: ");
             System.out.println();
             switch (menu){
                 case 1->addKontakt();
@@ -76,11 +76,8 @@ public static void deleteChat(){
             return;
         }
        myChats();
-       int choose= ScanUtil.intScan("Enter deletiton person: ");
-
-
-
-
+       int choose= ScanUtil.intScan("Enter deletiton person: ")-1;
+       delete(choose);
 }
     private static void addKontakt() {
         List<User> users = userService.getAll();
@@ -103,6 +100,15 @@ public static void deleteChat(){
 
     }
 
+    private static void delete(int choose){
+        List<Chat> chats = chatService.seeAllMyChats(FrontEnd.curUser.getId());
+        for (int i = 0; i <chats.size(); i++) {
+            Chat chat= chats.get(i);
+            if(choose==i){
+                chatService.delete(chat.getId());
+            }
+        }
+    }
 
     public static List<Chat>myChats(){
         List<Chat> chats = chatService.seeAllMyChats(FrontEnd.curUser.getId());

@@ -29,20 +29,6 @@ public class GroupView {
     static MassageService massageService= MassageServiceImpl.getInstance();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public static void groupSetting(){
         while (true) {
             int menu = ScanUtil.intScan("1.create group \n2.delet group \n3.add user to group \n0.exit \nchoose: ");

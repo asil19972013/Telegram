@@ -39,6 +39,7 @@ public class ChatServiceImpl implements ChatService {
          Chat chat=chatList.get(i);
          if(Objects.equals(chat.getId(),id)){
             chatList.remove(i);
+            return;
          }
         }
     }

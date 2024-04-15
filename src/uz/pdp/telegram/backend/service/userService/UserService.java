@@ -6,4 +6,6 @@ import uz.pdp.telegram.backend.service.BaceService;
 
 public interface UserService extends BaceService<User> {
     User login(LoginDto login);
+    void deleteBynumber(int a);
+
 }
