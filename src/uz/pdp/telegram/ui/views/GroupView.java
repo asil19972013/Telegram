@@ -84,7 +84,9 @@ public class GroupView {
 
 
     private static void addUsersToGroup() {
-        if(groupService.allMyGroups(FrontEnd.curUser.getId()).isEmpty()) return;
+        if(groupService.allMyGroups(FrontEnd.curUser.getId()).isEmpty()){
+            System.out.println("You do not any groups !!! ");
+            return;}
         List<Group> groups = seeAllMyGroups();
         Group group = groups.get(ScanUtil.intScan("Choose: ") - 1);
         List<User> all = userService.getAll();
