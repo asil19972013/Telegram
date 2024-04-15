@@ -44,15 +44,6 @@ public class UserServiceImpl implements UserService{
           }
         }
     }
-    @Override
-    public void deleteBynumber(int a) {
-        if(!userList.isEmpty()){
-        userList.remove(a);
-            System.out.println("Contact deleted");
-        }else {
-        System.out.println("Error");}
-
-    }
 
     @Override
     public void updete(User user) {

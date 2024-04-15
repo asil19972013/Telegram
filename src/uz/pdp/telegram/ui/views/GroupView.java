@@ -53,7 +53,7 @@ public class GroupView {
         GroupType type = GroupType.getType(ScanUtil.intScan("Choose: "));
         Group group=new Group(groupName,FrontEnd.curUser.getId(),type);
         groupService.create(group);
-        System.out.println("Sucseesfully added✅✅✅");
+        System.out.println("Group sucseesfully created✅✅✅");
 
     }
 

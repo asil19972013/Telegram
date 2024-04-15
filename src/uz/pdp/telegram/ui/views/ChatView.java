@@ -106,6 +106,7 @@ public static void deleteChat(){
             Chat chat= chats.get(i);
             if(choose==i){
                 chatService.delete(chat.getId());
+                System.out.println("Your contact deleted!!! ");
             }
         }
     }
