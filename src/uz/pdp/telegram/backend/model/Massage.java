@@ -21,7 +21,6 @@ public class Massage extends BaceModel {
 
     private SimpleDateFormat simpleDateFormat;
 
-    private MassageType massageType;
 
 
 
@@ -88,11 +87,5 @@ public class Massage extends BaceModel {
         this.simpleDateFormat = simpleDateFormat;
     }
 
-    public MassageType getMassageType() {
-        return massageType;
-    }
 
-    public void setMassageType(MassageType massageType) {
-        this.massageType = massageType;
-    }
 }

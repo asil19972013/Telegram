@@ -19,7 +19,7 @@ public class ChatServiceImpl implements ChatService {
     public List<Chat> seeAllMyChats(String userId) {
         List<Chat>chatList1=new ArrayList<>();
         for (Chat chat : chatList) {
-            if(Objects.equals(chat.getUser1Id(),userId)||Objects.equals(chat.getUser2Id(),userId)){
+            if(Objects.equals(chat.getUser1Id(),userId)){
                 chatList1.add(chat);
             }
         }
