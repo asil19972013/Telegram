@@ -72,10 +72,11 @@ public class GroupView {
     }
 
 
+
     public static void groupPart(){
-        List<Group> groups = groupService.allMyGroups(FrontEnd.curUser.getId());
+        List<Group> groups = seeAllMyGroups();
         if(groups.isEmpty()){
-            System.out.println("You do not have a group❌❌❌");
+            return;
         }
         else {
             Group group = groups.get(ScanUtil.intScan("Choose: ") - 1);
