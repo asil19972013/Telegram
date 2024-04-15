@@ -9,4 +9,5 @@ import java.util.List;
 public interface ChatService extends BaceService<Chat> {
     List<Chat> seeAllMyChats(String userId);
 
+
 }

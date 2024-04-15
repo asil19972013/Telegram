@@ -65,6 +65,7 @@ public class MassageServiceImpl implements MassageService{
     }
 
 
+
     @Override
     public List<Massage> seeAllMassagesByGroup(String adminId,String groupId) {
         List<Massage>adminMassage=new ArrayList<>();

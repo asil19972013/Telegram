@@ -60,6 +60,72 @@ public class GroupView {
 
 
     public static void groupPart(){
+        System.out.println("1.My created group \n2.Invited me group \n3.Search by group name \n0.Exit");
+        Integer option = ScanUtil.intScan("Choose: ");
+        if(!Character.isAlphabetic(option)) {
+            while (true){
+            switch (option) {
+                case 1 -> created();
+                case 2 -> initedMeGroup();
+                case 3 -> searchByGroupName();
+                case 0 -> {
+                    return;
+                }
+            }
+            }
+        }
+        else System.out.println("It is not a number❌❌❌");
+
+    }
+
+    private static void searchByGroupName() {
+    }
+
+    private static void initedMeGroup() {
+        List<GroupChat> groupChats = groupChatService.allInvitedMeGroup(FrontEnd.curUser.getId());
+        int i=0;
+        for (GroupChat groupChat : groupChats) {
+            Group group = groupService.get(groupChat.getGroupId());
+            System.out.println(i+1+"-"+group.getGroupName());
+            i++;
+        }
+        if(groupChats.isEmpty()){
+            System.out.println("Nobody invited you❌❌❌");
+        }
+        else {
+            Integer choose = ScanUtil.intScan("Choose: ") - 1;
+            if (!(Character.isAlphabetic(choose))) {
+                Group group = groupService.get(groupChats.get(choose).getGroupId());
+                if (group.getGroupType().equals(GroupType.PUBLIC)) {
+                    List<Massage> massages = massageService.seeAllMassagesByGroup(FrontEnd.curUser.getId(), group.getId());
+                    for (Massage massage : massages) {
+                        User user=userService.get(massage.getFrom());
+                        System.out.println(user.getUsername()+"-"+massage.getWord());
+                    }
+                    while (true) {
+                        Integer j = ScanUtil.intScan("0.Back 1.Massage \nchoose: ");
+                            if (j == 0) return;
+                            String word = ScanUtil.strScan("write a message here: ");
+                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                            Massage massage = new Massage(FrontEnd.curUser.getId(), group.getId(), word, simpleDateFormat);
+                            massageService.create(massage);
+
+
+                    }
+                } else {
+                    List<Massage> massages = massageService.seeAllMassagesByGroup(FrontEnd.curUser.getId(), group.getId());
+                    for (Massage massage : massages) {
+                        User user=userService.get(massage.getFrom());
+                        System.out.println(user.getUsername()+"-"+massage.getWord());
+                    }
+                }
+            } else System.out.println("It is not a number❌❌❌");
+
+        }
+    }
+
+
+    private static void created() {
         List<Group> groups = seeAllMyGroups();
         if(groups.isEmpty()){
             return;
@@ -68,18 +134,24 @@ public class GroupView {
             Group group = groups.get(ScanUtil.intScan("Choose: ") - 1);
             List<Massage> massages = massageService.seeAllMassagesByGroup(FrontEnd.curUser.getId(), group.getId());
             for (Massage massage : massages) {
-                System.out.println(massage.getWord());
+                if (massage.getTo().equals(group.getId())) {
+                    User user = userService.get(massage.getFrom());
+                    System.out.println(user.getUsername() + "-" + massage.getWord());
+                }
             }
             while (true) {
                 Integer i = ScanUtil.intScan("0.Back 1.Massage \nchoose: ");
-                if (i == 0) return;
-                String word = ScanUtil.strScan("write a message here: ");
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                Massage massage = new Massage(FrontEnd.curUser.getId(), group.getId(), word, simpleDateFormat);
-                massages.add(massage);
+                if (!(Character.isAlphabetic(i))) {
+                    if (i == 0) return;
+                    String word = ScanUtil.strScan("write a message here: ");
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    Massage massage = new Massage(FrontEnd.curUser.getId(), group.getId(), word, simpleDateFormat);
+                    massageService.create(massage);
+                }
+                else System.out.println("it is not correct option❌❌❌");
             }
-        }
 
+        }
     }
 
 
