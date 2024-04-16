@@ -11,4 +11,5 @@ public interface GroupChatService extends BaceService<GroupChat> {
 
     List<GroupChat> allInvitedMeGroup(String ownId);
     List<GroupChat>seeallChatsByGroupId(String groupId);
+
 }

@@ -54,6 +54,17 @@ public class GroupServiceImpl implements GroupService{
         return groupList;
     }
 
+    @Override
+    public List<Group> seeAllGroupByName(String name) {
+        List<Group>groups=new ArrayList<>();
+        for (Group group : groupList) {
+            if(Objects.equals(group.getGroupName(),name)){
+                groups.add(group);
+            }
+        }
+        return groups;
+    }
+
     static GroupService groupService;
 
 
