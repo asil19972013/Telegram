@@ -3,7 +3,7 @@ package uz.pdp.telegram.ui.utils;
 import java.util.Scanner;
 
 public interface ScanUtil {
-    static Integer intScan(String hint){
+    static Integer intScan (String hint){
         Scanner scanner= new Scanner(System.in);
         System.out.print(hint);
         return scanner.nextInt();
